@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://topsgyms.com/sitemap.xml
