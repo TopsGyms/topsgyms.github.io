@@ -675,3 +675,48 @@
     width: min(300px, calc(100vw - 32px));
   }
 }
+/* FLAG-ONLY LANGUAGE SELECTOR */
+
+.language-trigger {
+  min-width: 48px;
+  height: 40px;
+  padding: 0 9px;
+  justify-content: center;
+  gap: 8px;
+}
+
+.language-trigger-flag {
+  display: block;
+  width: 24px;
+  height: 16px;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+
+.language-option-flag {
+  display: block;
+  width: 24px;
+  height: 16px;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow:
+    0 0 0 1px rgba(19, 51, 84, 0.12);
+}
+
+.language-trigger-chevron {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 700px) {
+  .header-actions .language-switcher {
+    width: auto;
+  }
+
+  .header-actions .language-trigger {
+    width: 46px;
+    min-width: 46px;
+    padding: 0 7px;
+  }
+}
