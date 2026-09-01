@@ -65,69 +65,74 @@ window.addEventListener("resize", () => {
   }
 });
 
-/* LANGUAGE SWITCHER */
+/* LANGUAGES */
 
 const languages = [
   {
     code: "EN",
     name: "English",
-    flag: "🇬🇧",
+    flag: "gb",
     current: true
   },
   {
     code: "ES",
     name: "Español",
-    flag: "🇪🇸"
+    flag: "es"
   },
   {
     code: "DE",
     name: "Deutsch",
-    flag: "🇩🇪"
+    flag: "de"
   },
   {
     code: "FR",
     name: "Français",
-    flag: "🇫🇷"
+    flag: "fr"
   },
   {
     code: "NL",
     name: "Nederlands",
-    flag: "🇳🇱"
+    flag: "nl"
   },
   {
     code: "IT",
     name: "Italiano",
-    flag: "🇮🇹"
+    flag: "it"
   },
   {
     code: "PT",
     name: "Português",
-    flag: "🇵🇹"
+    flag: "pt"
   },
   {
     code: "PL",
     name: "Polski",
-    flag: "🇵🇱"
+    flag: "pl"
   },
   {
     code: "SE",
     name: "Svenska",
-    flag: "🇸🇪"
+    flag: "se"
   },
   {
     code: "DK",
     name: "Dansk",
-    flag: "🇩🇰"
+    flag: "dk"
   },
   {
     code: "NO",
     name: "Norsk",
-    flag: "🇳🇴"
+    flag: "no"
+  },
+  {
+    code: "FI",
+    name: "Suomi",
+    flag: "fi"
   },
   {
     code: "GR",
     name: "Ελληνικά",
-    flag: "🇬🇷"
+    flag: "gr"
   }
 ];
 
@@ -139,13 +144,9 @@ function closeLanguageMenus(except = null) {
 
     switcher.classList.remove("is-open");
 
-    const trigger =
-      switcher.querySelector(".language-trigger");
+    const trigger = switcher.querySelector(".language-trigger");
 
-    trigger?.setAttribute(
-      "aria-expanded",
-      "false"
-    );
+    trigger?.setAttribute("aria-expanded", "false");
   });
 }
 
@@ -169,17 +170,14 @@ function buildLanguageSwitcher(placeholder) {
     "false"
   );
 
-  trigger.innerHTML = `
-    <span
-      class="language-trigger-flag"
-      aria-hidden="true"
-    >
-      🇬🇧
-    </span>
+  /* ONLY THE CURRENT FLAG + ARROW */
 
-    <span class="language-trigger-code">
-      EN
-    </span>
+  trigger.innerHTML = `
+    <img
+      class="language-trigger-flag"
+      src="https://flagcdn.com/w40/gb.png"
+      alt="English"
+    >
 
     <span
       class="language-trigger-chevron"
@@ -200,9 +198,9 @@ function buildLanguageSwitcher(placeholder) {
 
     <div class="language-note">
       English is currently available.
-      Full European language versions will be
-      added as their professional translations
-      are completed.
+      Additional European language versions will
+      become available as their professional
+      translations are completed.
     </div>
   `;
 
@@ -225,12 +223,11 @@ function buildLanguageSwitcher(placeholder) {
         : "");
 
     option.innerHTML = `
-      <span
+      <img
         class="language-option-flag"
-        aria-hidden="true"
+        src="https://flagcdn.com/w40/${language.flag}.png"
+        alt=""
       >
-        ${language.flag}
-      </span>
 
       <span class="language-option-name">
         ${language.name}
@@ -238,63 +235,53 @@ function buildLanguageSwitcher(placeholder) {
       </span>
 
       <span class="language-option-status">
-        ${language.current
-          ? "Active"
-          : "Soon"}
+        ${
+          language.current
+            ? "Active"
+            : "Soon"
+        }
       </span>
     `;
 
-    option.addEventListener(
-      "click",
-      () => {
-        if (language.current) {
-          note.textContent =
-            "English is currently active.";
-
-          closeLanguageMenus();
-
-          return;
-        }
-
+    option.addEventListener("click", () => {
+      if (language.current) {
         note.textContent =
-          `${language.name} is prepared as a future full website version. ` +
-          `English remains active until the professional translation is live.`;
+          "English is currently active.";
+
+        closeLanguageMenus();
+
+        return;
       }
-    );
+
+      note.textContent =
+        `${language.name} will become available once the professional translation is complete. English remains active for now.`;
+    });
 
     options.appendChild(option);
   });
 
-  trigger.addEventListener(
-    "click",
-    (event) => {
-      event.stopPropagation();
+  trigger.addEventListener("click", (event) => {
+    event.stopPropagation();
 
-      const willOpen =
-        !switcher.classList.contains(
-          "is-open"
-        );
+    const willOpen =
+      !switcher.classList.contains("is-open");
 
-      closeLanguageMenus(switcher);
+    closeLanguageMenus(switcher);
 
-      switcher.classList.toggle(
-        "is-open",
-        willOpen
-      );
+    switcher.classList.toggle(
+      "is-open",
+      willOpen
+    );
 
-      trigger.setAttribute(
-        "aria-expanded",
-        String(willOpen)
-      );
-    }
-  );
+    trigger.setAttribute(
+      "aria-expanded",
+      String(willOpen)
+    );
+  });
 
-  menu.addEventListener(
-    "click",
-    (event) => {
-      event.stopPropagation();
-    }
-  );
+  menu.addEventListener("click", (event) => {
+    event.stopPropagation();
+  });
 
   switcher.appendChild(trigger);
   switcher.appendChild(menu);
@@ -308,24 +295,18 @@ document
   .querySelectorAll(".language-current")
   .forEach(buildLanguageSwitcher);
 
-document.addEventListener(
-  "click",
-  () => {
-    closeLanguageMenus();
-  }
-);
+document.addEventListener("click", () => {
+  closeLanguageMenus();
+});
 
 /* KEYBOARD */
 
-document.addEventListener(
-  "keydown",
-  (event) => {
-    if (event.key === "Escape") {
-      closeMenu();
-      closeLanguageMenus();
-    }
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeMenu();
+    closeLanguageMenus();
   }
-);
+});
 
 /* REVEAL ANIMATIONS */
 
@@ -364,19 +345,13 @@ if (
       }
     );
 
-  revealElements.forEach(
-    (element) => {
-      revealObserver.observe(element);
-    }
-  );
+  revealElements.forEach((element) => {
+    revealObserver.observe(element);
+  });
 } else {
-  revealElements.forEach(
-    (element) => {
-      element.classList.add(
-        "is-visible"
-      );
-    }
-  );
+  revealElements.forEach((element) => {
+    element.classList.add("is-visible");
+  });
 }
 
 /* FOOTER YEAR */
