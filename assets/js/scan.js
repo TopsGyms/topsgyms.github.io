@@ -4,8 +4,59 @@ const scanForm =
   );
 
 if (scanForm) {
+
   const endpoint =
     "https://formspree.io/f/mbgjodrk";
+
+  /* =========================================================
+     LANGUAGE
+     ========================================================= */
+
+  const isSpanish =
+    scanForm.dataset.formLanguage === "es" ||
+    window.location.pathname === "/es" ||
+    window.location.pathname.startsWith(
+      "/es/"
+    );
+
+  const text =
+    isSpanish
+      ? {
+          privacyPrefix:
+            "He leído y comprendo la",
+          privacySuffix:
+            "y entiendo que TopsGyms procesará la información proporcionada para revisar y responder a esta solicitud.",
+          sending:
+            "Enviando...",
+          success:
+            "Gracias. Tu solicitud del Gym Opportunity Scan se ha enviado correctamente. TopsGyms la revisará personalmente y se pondrá en contacto contigo en breve.",
+          error:
+            "Ha ocurrido un problema al enviar tu solicitud. Inténtalo de nuevo o escribe a sofie@topsgyms.com.",
+          subject:
+            "New TopsGyms Gym Opportunity Scan request - Spanish",
+          language:
+            "Spanish"
+        }
+      : {
+          privacyPrefix:
+            "I have read and understand the",
+          privacySuffix:
+            "and understand that TopsGyms will process the information provided to review and respond to this request.",
+          sending:
+            "Sending...",
+          success:
+            "Thank you. Your Gym Opportunity Scan request has been sent successfully. TopsGyms will review it personally and contact you shortly.",
+          error:
+            "Something went wrong while sending your request. Please try again or email sofie@topsgyms.com.",
+          subject:
+            "New TopsGyms Gym Opportunity Scan request",
+          language:
+            "English"
+        };
+
+  /* =========================================================
+     ELEMENTS
+     ========================================================= */
 
   const panels = [
     ...scanForm.querySelectorAll(
@@ -45,7 +96,9 @@ if (scanForm) {
     );
 
   const consentLabel =
-    consentInput?.closest("label");
+    consentInput?.closest(
+      "label"
+    );
 
   const consentText =
     consentLabel?.querySelector(
@@ -59,20 +112,25 @@ if (scanForm) {
      FORM CONFIGURATION
      ========================================================= */
 
-  scanForm.action = endpoint;
-  scanForm.method = "POST";
+  scanForm.action =
+    endpoint;
+
+  scanForm.method =
+    "POST";
 
   /*
-    The checkbox confirms that the visitor has
-    seen and understood the privacy information.
+    The checkbox confirms that the visitor
+    has seen and understood the privacy
+    information.
 
-    It is not presented as the legal basis for
-    processing the business enquiry.
+    It is not presented as the legal basis
+    for processing the business enquiry.
   */
 
   if (consentText) {
+
     consentText.innerHTML = `
-      I have read and understand the
+      ${text.privacyPrefix}
       <a
         href="/privacy/"
         target="_blank"
@@ -85,17 +143,16 @@ if (scanForm) {
       >
         Privacy Policy
       </a>
-      and understand that TopsGyms will process
-      the information provided to review and
-      respond to this request.
+      ${text.privacySuffix}
     `;
   }
 
-  /*
-    Accessible live status region.
-  */
+  /* =========================================================
+     ACCESSIBLE STATUS
+     ========================================================= */
 
   if (formStatus) {
+
     formStatus.setAttribute(
       "aria-live",
       "polite"
@@ -117,19 +174,23 @@ if (scanForm) {
      ========================================================= */
 
   function showStep(step) {
-    panels.forEach((panel) => {
-      panel.classList.toggle(
-        "is-active",
-        panel.dataset.formPanel ===
-          String(step)
-      );
-    });
+
+    panels.forEach(
+      (panel) => {
+
+        panel.classList.toggle(
+          "is-active",
+          panel.dataset.formPanel ===
+            String(step)
+        );
+      }
+    );
 
     progressSteps.forEach(
       (progress) => {
+
         const isActive =
-          progress.dataset
-            .progressStep ===
+          progress.dataset.progressStep ===
           String(step);
 
         progress.classList.toggle(
@@ -153,6 +214,7 @@ if (scanForm) {
   }
 
   function validateFirstStep() {
+
     const firstPanel =
       scanForm.querySelector(
         '[data-form-panel="1"]'
@@ -172,9 +234,11 @@ if (scanForm) {
       const field
       of requiredFields
     ) {
+
       if (
         !field.checkValidity()
       ) {
+
         field.reportValidity();
         field.focus();
 
@@ -190,9 +254,13 @@ if (scanForm) {
      ========================================================= */
 
   function clearStatus() {
-    if (!formStatus) return;
 
-    formStatus.textContent = "";
+    if (!formStatus) {
+      return;
+    }
+
+    formStatus.textContent =
+      "";
 
     formStatus.classList.remove(
       "is-visible"
@@ -216,7 +284,10 @@ if (scanForm) {
     message,
     type = "success"
   ) {
-    if (!formStatus) return;
+
+    if (!formStatus) {
+      return;
+    }
 
     const isError =
       type === "error";
@@ -245,13 +316,9 @@ if (scanForm) {
         : "polite"
     );
 
-    /*
-      Move keyboard/screen-reader focus to the
-      result after submission.
-    */
-
     window.requestAnimationFrame(
       () => {
+
         formStatus.focus({
           preventScroll: true
         });
@@ -266,7 +333,10 @@ if (scanForm) {
   function setSubmitting(
     isSubmitting
   ) {
-    if (!submitButton) return;
+
+    if (!submitButton) {
+      return;
+    }
 
     submitButton.disabled =
       isSubmitting;
@@ -277,11 +347,14 @@ if (scanForm) {
     );
 
     if (isSubmitting) {
+
       submitButton.textContent =
-        "Sending...";
+        text.sending;
+
     } else if (
       originalSubmitText
     ) {
+
       submitButton.innerHTML =
         originalSubmitText;
     }
@@ -294,6 +367,7 @@ if (scanForm) {
   nextButton?.addEventListener(
     "click",
     () => {
+
       clearStatus();
 
       if (
@@ -309,7 +383,9 @@ if (scanForm) {
   backButton?.addEventListener(
     "click",
     () => {
+
       clearStatus();
+
       showStep(1);
     }
   );
@@ -321,6 +397,7 @@ if (scanForm) {
   scanForm.addEventListener(
     "submit",
     async (event) => {
+
       event.preventDefault();
 
       clearStatus();
@@ -328,6 +405,7 @@ if (scanForm) {
       if (
         !scanForm.checkValidity()
       ) {
+
         scanForm.reportValidity();
 
         const invalidField =
@@ -343,6 +421,7 @@ if (scanForm) {
       setSubmitting(true);
 
       try {
+
         const formData =
           new FormData(
             scanForm
@@ -350,7 +429,12 @@ if (scanForm) {
 
         formData.append(
           "_subject",
-          "New TopsGyms Gym Opportunity Scan request"
+          text.subject
+        );
+
+        formData.append(
+          "Website language",
+          text.language
         );
 
         const response =
@@ -367,23 +451,27 @@ if (scanForm) {
           );
 
         if (!response.ok) {
+
           throw new Error(
             "Submission failed"
           );
         }
 
         setStatus(
-          "Thank you. Your Gym Opportunity Scan request has been sent successfully. TopsGyms will review it personally and contact you shortly."
+          text.success
         );
 
         scanForm.reset();
 
       } catch (error) {
+
         setStatus(
-          "Something went wrong while sending your request. Please try again or email sofie@topsgyms.com.",
+          text.error,
           "error"
         );
+
       } finally {
+
         setSubmitting(false);
       }
     }
@@ -398,28 +486,31 @@ document
   .querySelectorAll(
     "[data-faq-question]"
   )
-  .forEach((button) => {
-    button.addEventListener(
-      "click",
-      () => {
-        const answer =
-          button
-            .nextElementSibling;
+  .forEach(
+    (button) => {
 
-        const isOpen =
-          button.getAttribute(
-            "aria-expanded"
-          ) === "true";
+      button.addEventListener(
+        "click",
+        () => {
 
-        button.setAttribute(
-          "aria-expanded",
-          String(!isOpen)
-        );
+          const answer =
+            button.nextElementSibling;
 
-        answer?.classList.toggle(
-          "is-open",
-          !isOpen
-        );
-      }
-    );
-  });
+          const isOpen =
+            button.getAttribute(
+              "aria-expanded"
+            ) === "true";
+
+          button.setAttribute(
+            "aria-expanded",
+            String(!isOpen)
+          );
+
+          answer?.classList.toggle(
+            "is-open",
+            !isOpen
+          );
+        }
+      );
+    }
+  );
