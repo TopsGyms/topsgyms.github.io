@@ -17,17 +17,123 @@ if (contactForm) {
       'button[type="submit"]'
     );
 
+  const consentInput =
+    contactForm.querySelector(
+      'input[name="consent"]'
+    );
+
+  const consentLabel =
+    consentInput?.closest("label");
+
+  const consentText =
+    consentLabel?.querySelector(
+      "span"
+    );
+
   const originalSubmitText =
     submitButton?.innerHTML;
 
-  contactForm.action = endpoint;
-  contactForm.method = "POST";
+  /* =========================================================
+     FORM CONFIGURATION
+     ========================================================= */
+
+  contactForm.action =
+    endpoint;
+
+  contactForm.method =
+    "POST";
+
+  /*
+    Privacy acknowledgement
+  */
+
+  if (consentText) {
+    consentText.innerHTML = `
+      I have read and understand the
+      <a
+        href="/privacy/"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="
+          text-decoration: underline;
+          text-underline-offset: 3px;
+          font-weight: 600;
+        "
+      >
+        Privacy Policy
+      </a>
+      and understand that TopsGyms will process
+      the information provided to review and
+      respond to this enquiry.
+    `;
+  }
+
+  /*
+    Accessible live status region
+  */
+
+  if (contactStatus) {
+    contactStatus.setAttribute(
+      "aria-live",
+      "polite"
+    );
+
+    contactStatus.setAttribute(
+      "aria-atomic",
+      "true"
+    );
+
+    contactStatus.setAttribute(
+      "tabindex",
+      "-1"
+    );
+
+    contactStatus.setAttribute(
+      "role",
+      "status"
+    );
+  }
+
+  /* =========================================================
+     STATUS
+     ========================================================= */
+
+  function clearStatus() {
+    if (!contactStatus) {
+      return;
+    }
+
+    contactStatus.textContent =
+      "";
+
+    contactStatus.classList.remove(
+      "is-visible"
+    );
+
+    delete contactStatus.dataset
+      .statusType;
+
+    contactStatus.setAttribute(
+      "role",
+      "status"
+    );
+
+    contactStatus.setAttribute(
+      "aria-live",
+      "polite"
+    );
+  }
 
   function setStatus(
     message,
     type = "success"
   ) {
-    if (!contactStatus) return;
+    if (!contactStatus) {
+      return;
+    }
+
+    const isError =
+      type === "error";
 
     contactStatus.textContent =
       message;
@@ -38,12 +144,40 @@ if (contactForm) {
 
     contactStatus.dataset.statusType =
       type;
+
+    contactStatus.setAttribute(
+      "role",
+      isError
+        ? "alert"
+        : "status"
+    );
+
+    contactStatus.setAttribute(
+      "aria-live",
+      isError
+        ? "assertive"
+        : "polite"
+    );
+
+    window.requestAnimationFrame(
+      () => {
+        contactStatus.focus({
+          preventScroll: true
+        });
+      }
+    );
   }
+
+  /* =========================================================
+     SUBMIT BUTTON
+     ========================================================= */
 
   function setSubmitting(
     isSubmitting
   ) {
-    if (!submitButton) return;
+    if (!submitButton) {
+      return;
+    }
 
     submitButton.disabled =
       isSubmitting;
@@ -56,49 +190,65 @@ if (contactForm) {
     if (isSubmitting) {
       submitButton.textContent =
         "Sending...";
-    } else if (originalSubmitText) {
+    } else if (
+      originalSubmitText
+    ) {
       submitButton.innerHTML =
         originalSubmitText;
     }
   }
+
+  /* =========================================================
+     SUBMISSION
+     ========================================================= */
 
   contactForm.addEventListener(
     "submit",
     async (event) => {
       event.preventDefault();
 
-      if (!contactForm.checkValidity()) {
+      clearStatus();
+
+      if (
+        !contactForm.checkValidity()
+      ) {
         contactForm.reportValidity();
+
+        const invalidField =
+          contactForm.querySelector(
+            ":invalid"
+          );
+
+        invalidField?.focus();
+
         return;
       }
 
       setSubmitting(true);
 
-      if (contactStatus) {
-        contactStatus.classList.remove(
-          "is-visible"
-        );
-      }
-
       try {
         const formData =
-          new FormData(contactForm);
+          new FormData(
+            contactForm
+          );
 
         formData.append(
           "_subject",
           "New TopsGyms website enquiry"
         );
 
-        const response = await fetch(
-          endpoint,
-          {
-            method: "POST",
-            body: formData,
-            headers: {
-              Accept: "application/json"
+        const response =
+          await fetch(
+            endpoint,
+            {
+              method: "POST",
+              body: formData,
+              headers: {
+                Accept:
+                  "application/json"
+              }
             }
-          }
-        );
+          );
 
         if (!response.ok) {
           throw new Error(
@@ -124,7 +274,9 @@ if (contactForm) {
   );
 }
 
-/* CONTACT FAQ */
+/* =========================================================
+   CONTACT FAQ
+   ========================================================= */
 
 document
   .querySelectorAll(
@@ -135,7 +287,8 @@ document
       "click",
       () => {
         const answer =
-          button.nextElementSibling;
+          button
+            .nextElementSibling;
 
         const isOpen =
           button.getAttribute(
