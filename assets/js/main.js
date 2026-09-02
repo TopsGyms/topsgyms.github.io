@@ -46,9 +46,17 @@ function closeMenu() {
     return;
   }
 
-  menuButton.classList.remove("is-open");
-  mobileNavigation.classList.remove("is-open");
-  header.classList.remove("menu-active");
+  menuButton.classList.remove(
+    "is-open"
+  );
+
+  mobileNavigation.classList.remove(
+    "is-open"
+  );
+
+  header.classList.remove(
+    "menu-active"
+  );
 
   menuButton.setAttribute(
     "aria-expanded",
@@ -74,9 +82,17 @@ function openMenu() {
     return;
   }
 
-  menuButton.classList.add("is-open");
-  mobileNavigation.classList.add("is-open");
-  header.classList.add("menu-active");
+  menuButton.classList.add(
+    "is-open"
+  );
+
+  mobileNavigation.classList.add(
+    "is-open"
+  );
+
+  header.classList.add(
+    "menu-active"
+  );
 
   menuButton.setAttribute(
     "aria-expanded",
@@ -96,11 +112,12 @@ function openMenu() {
 menuButton?.addEventListener(
   "click",
   () => {
-    if (
+    const isOpen =
       menuButton.classList.contains(
         "is-open"
-      )
-    ) {
+      );
+
+    if (isOpen) {
       closeMenu();
     } else {
       openMenu();
@@ -134,18 +151,17 @@ const linkedInUrl =
 document
   .querySelectorAll('a[href="#"]')
   .forEach((link) => {
-    if (
-      link.textContent.trim()
-        .toLowerCase() !==
-      "linkedin"
-    ) {
+    const label =
+      link.textContent
+        .trim()
+        .toLowerCase();
+
+    if (label !== "linkedin") {
       return;
     }
 
     link.href = linkedInUrl;
-
     link.target = "_blank";
-
     link.rel =
       "noopener noreferrer";
 
@@ -159,72 +175,82 @@ document
    LANGUAGES
    ========================================================= */
 
+/*
+  Flags are loaded from the local TopsGyms SVG sprite.
+
+  This keeps the selector:
+  - independent from third-party flag services;
+  - consistent on Windows, macOS and mobile;
+  - lightweight;
+  - privacy-friendly.
+*/
+
 const languages = [
   {
     code: "EN",
     name: "English",
-    flag: "🇬🇧",
+    flag: "gb",
     current: true
   },
   {
     code: "ES",
     name: "Español",
-    flag: "🇪🇸"
+    flag: "es"
   },
   {
     code: "DE",
     name: "Deutsch",
-    flag: "🇩🇪"
+    flag: "de"
   },
   {
     code: "FR",
     name: "Français",
-    flag: "🇫🇷"
+    flag: "fr"
   },
   {
     code: "NL",
     name: "Nederlands",
-    flag: "🇳🇱"
+    flag: "nl"
   },
   {
     code: "IT",
     name: "Italiano",
-    flag: "🇮🇹"
+    flag: "it"
   },
   {
     code: "PT",
     name: "Português",
-    flag: "🇵🇹"
+    flag: "pt"
   },
   {
     code: "PL",
     name: "Polski",
-    flag: "🇵🇱"
+    flag: "pl"
   },
   {
     code: "SV",
     name: "Svenska",
-    flag: "🇸🇪"
+    flag: "se"
   },
   {
     code: "DA",
     name: "Dansk",
-    flag: "🇩🇰"
+    flag: "dk"
   },
   {
     code: "NO",
     name: "Norsk",
-    flag: "🇳🇴"
+    flag: "no"
   },
   {
     code: "FI",
     name: "Suomi",
-    flag: "🇫🇮"
+    flag: "fi"
   },
   {
     code: "EL",
     name: "Ελληνικά",
-    flag: "🇬🇷"
+    flag: "gr"
   }
 ];
 
@@ -243,46 +269,103 @@ function closeLanguageMenus(
         "is-open"
       );
 
-      switcher
-        .querySelector(
+      const trigger =
+        switcher.querySelector(
           ".language-trigger"
-        )
-        ?.setAttribute(
-          "aria-expanded",
-          "false"
         );
+
+      trigger?.setAttribute(
+        "aria-expanded",
+        "false"
+      );
     }
   );
 }
 
+/* =========================================================
+   LOCAL FLAG
+   ========================================================= */
+
 function createFlagElement(
-  flag,
+  flagId,
   className
 ) {
-  const element =
-    document.createElement("span");
+  const svg =
+    document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "svg"
+    );
 
-  element.className = className;
+  svg.setAttribute(
+    "class",
+    className
+  );
 
-  element.textContent = flag;
+  svg.setAttribute(
+    "viewBox",
+    "0 0 24 16"
+  );
 
-  element.setAttribute(
+  svg.setAttribute(
+    "width",
+    "24"
+  );
+
+  svg.setAttribute(
+    "height",
+    "16"
+  );
+
+  svg.setAttribute(
     "aria-hidden",
     "true"
   );
 
-  element.style.display = "grid";
-  element.style.placeItems = "center";
-  element.style.width = "24px";
-  element.style.height = "18px";
-  element.style.fontSize = "18px";
-  element.style.lineHeight = "1";
-  element.style.borderRadius = "0";
-  element.style.boxShadow = "none";
-  element.style.flexShrink = "0";
+  svg.setAttribute(
+    "focusable",
+    "false"
+  );
 
-  return element;
+  svg.style.display =
+    "block";
+
+  svg.style.width =
+    "24px";
+
+  svg.style.height =
+    "16px";
+
+  svg.style.flexShrink =
+    "0";
+
+  svg.style.borderRadius =
+    "2px";
+
+  svg.style.overflow =
+    "hidden";
+
+  svg.style.boxShadow =
+    "0 0 0 1px rgba(19, 51, 84, 0.12)";
+
+  const use =
+    document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "use"
+    );
+
+  use.setAttribute(
+    "href",
+    `/assets/img/flags.svg#${flagId}`
+  );
+
+  svg.appendChild(use);
+
+  return svg;
 }
+
+/* =========================================================
+   LANGUAGE SELECTOR
+   ========================================================= */
 
 function buildLanguageSwitcher(
   placeholder
@@ -296,7 +379,8 @@ function buildLanguageSwitcher(
   const trigger =
     document.createElement("button");
 
-  trigger.type = "button";
+  trigger.type =
+    "button";
 
   trigger.className =
     "language-trigger";
@@ -330,7 +414,9 @@ function buildLanguageSwitcher(
   );
 
   const triggerChevron =
-    document.createElement("span");
+    document.createElement(
+      "span"
+    );
 
   triggerChevron.className =
     "language-trigger-chevron";
@@ -344,6 +430,8 @@ function buildLanguageSwitcher(
     triggerChevron
   );
 
+  /* MENU */
+
   const menu =
     document.createElement("div");
 
@@ -356,7 +444,9 @@ function buildLanguageSwitcher(
   );
 
   const menuTitle =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
 
   menuTitle.className =
     "language-menu-title";
@@ -365,19 +455,25 @@ function buildLanguageSwitcher(
     "Select language";
 
   const options =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
 
   options.className =
     "language-options";
 
   const note =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
 
   note.className =
     "language-note";
 
   note.textContent =
     "English is currently available. Additional European language versions will become available as their professional translations are completed.";
+
+  /* OPTIONS */
 
   languages.forEach(
     (language) => {
@@ -386,7 +482,8 @@ function buildLanguageSwitcher(
           "button"
         );
 
-      option.type = "button";
+      option.type =
+        "button";
 
       option.className =
         "language-option" +
@@ -408,12 +505,11 @@ function buildLanguageSwitcher(
           : `${language.name}, coming soon`
       );
 
-      option.appendChild(
+      const flag =
         createFlagElement(
           language.flag,
           "language-option-flag"
-        )
-      );
+        );
 
       const name =
         document.createElement(
@@ -449,6 +545,7 @@ function buildLanguageSwitcher(
           ? "Active"
           : "Soon";
 
+      option.appendChild(flag);
       option.appendChild(name);
       option.appendChild(status);
 
@@ -471,13 +568,25 @@ function buildLanguageSwitcher(
         }
       );
 
-      options.appendChild(option);
+      options.appendChild(
+        option
+      );
     }
   );
 
-  menu.appendChild(menuTitle);
-  menu.appendChild(options);
-  menu.appendChild(note);
+  menu.appendChild(
+    menuTitle
+  );
+
+  menu.appendChild(
+    options
+  );
+
+  menu.appendChild(
+    note
+  );
+
+  /* OPEN / CLOSE */
 
   trigger.addEventListener(
     "click",
@@ -512,8 +621,13 @@ function buildLanguageSwitcher(
     }
   );
 
-  switcher.appendChild(trigger);
-  switcher.appendChild(menu);
+  switcher.appendChild(
+    trigger
+  );
+
+  switcher.appendChild(
+    menu
+  );
 
   placeholder.replaceWith(
     switcher
@@ -563,7 +677,8 @@ const revealElements =
   );
 
 if (
-  "IntersectionObserver" in window &&
+  "IntersectionObserver" in
+    window &&
   !window
     .matchMedia(
       "(prefers-reduced-motion: reduce)"
