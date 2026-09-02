@@ -1,11 +1,17 @@
 const header =
-  document.querySelector("[data-header]");
+  document.querySelector(
+    "[data-header]"
+  );
 
 const menuButton =
-  document.querySelector("[data-menu-button]");
+  document.querySelector(
+    "[data-menu-button]"
+  );
 
 const mobileNavigation =
-  document.querySelector("[data-mobile-navigation]");
+  document.querySelector(
+    "[data-mobile-navigation]"
+  );
 
 const mobileLinks =
   document.querySelectorAll(
@@ -13,11 +19,71 @@ const mobileLinks =
   );
 
 /* =========================================================
+   CURRENT LANGUAGE
+   ========================================================= */
+
+const isSpanishPage =
+  window.location.pathname === "/es" ||
+  window.location.pathname.startsWith(
+    "/es/"
+  );
+
+const currentLanguageCode =
+  isSpanishPage
+    ? "ES"
+    : "EN";
+
+const interfaceText =
+  currentLanguageCode === "ES"
+    ? {
+        openMenu: "Abrir menú",
+        closeMenu: "Cerrar menú",
+        chooseLanguage:
+          "Elegir idioma del sitio web.",
+        menuTitle:
+          "Seleccionar idioma",
+        active:
+          "Activo",
+        available:
+          "Disponible",
+        soon:
+          "Próximamente",
+        currentMessage:
+          "Este idioma está activo actualmente.",
+        comingSoon:
+          "Este idioma estará disponible cuando se complete su traducción profesional.",
+        note:
+          "Inglés y español están disponibles actualmente. Se añadirán más idiomas europeos cuando sus traducciones profesionales estén completas."
+      }
+    : {
+        openMenu: "Open menu",
+        closeMenu: "Close menu",
+        chooseLanguage:
+          "Choose website language.",
+        menuTitle:
+          "Select language",
+        active:
+          "Active",
+        available:
+          "Available",
+        soon:
+          "Soon",
+        currentMessage:
+          "This language is currently active.",
+        comingSoon:
+          "This language will become available once its professional translation is complete.",
+        note:
+          "English and Spanish are currently available. Additional European languages will be added as their professional translations are completed."
+      };
+
+/* =========================================================
    HEADER
    ========================================================= */
 
 function updateHeader() {
-  if (!header) return;
+  if (!header) {
+    return;
+  }
 
   header.classList.toggle(
     "is-scrolled",
@@ -30,7 +96,9 @@ updateHeader();
 window.addEventListener(
   "scroll",
   updateHeader,
-  { passive: true }
+  {
+    passive: true
+  }
 );
 
 /* =========================================================
@@ -65,7 +133,7 @@ function closeMenu() {
 
   menuButton.setAttribute(
     "aria-label",
-    "Open menu"
+    interfaceText.openMenu
   );
 
   document.body.classList.remove(
@@ -101,11 +169,18 @@ function openMenu() {
 
   menuButton.setAttribute(
     "aria-label",
-    "Close menu"
+    interfaceText.closeMenu
   );
 
   document.body.classList.add(
     "menu-open"
+  );
+}
+
+if (menuButton) {
+  menuButton.setAttribute(
+    "aria-label",
+    interfaceText.openMenu
   );
 }
 
@@ -149,7 +224,9 @@ const linkedInUrl =
   "https://www.linkedin.com/in/sofie-tops-3b7aa0432/";
 
 document
-  .querySelectorAll('a[href="#"]')
+  .querySelectorAll(
+    'a[href="#"]'
+  )
   .forEach((link) => {
     const label =
       link.textContent
@@ -160,8 +237,12 @@ document
       return;
     }
 
-    link.href = linkedInUrl;
-    link.target = "_blank";
+    link.href =
+      linkedInUrl;
+
+    link.target =
+      "_blank";
+
     link.rel =
       "noopener noreferrer";
 
@@ -172,96 +253,196 @@ document
   });
 
 /* =========================================================
-   LANGUAGES
+   LANGUAGE ROUTING
    ========================================================= */
 
-/*
-  Flags are loaded from the local TopsGyms SVG sprite.
+const translatedRoutes = [
+  "/",
+  "/services/",
+  "/opportunity-scan/",
+  "/approach/",
+  "/about/",
+  "/contact/"
+];
 
-  This keeps the selector:
-  - independent from third-party flag services;
-  - consistent on Windows, macOS and mobile;
-  - lightweight;
-  - privacy-friendly.
-*/
+function normalizePath(pathname) {
+  let path =
+    pathname || "/";
+
+  if (!path.startsWith("/")) {
+    path =
+      `/${path}`;
+  }
+
+  if (
+    path !== "/" &&
+    !path.endsWith("/")
+  ) {
+    path += "/";
+  }
+
+  return path;
+}
+
+function getEnglishRoute() {
+  let path =
+    normalizePath(
+      window.location.pathname
+    );
+
+  if (
+    path === "/es/" ||
+    path === "/es"
+  ) {
+    return "/";
+  }
+
+  if (
+    path.startsWith("/es/")
+  ) {
+    path =
+      path.slice(3);
+
+    if (!path.startsWith("/")) {
+      path =
+        `/${path}`;
+    }
+
+    path =
+      normalizePath(path);
+  }
+
+  if (
+    translatedRoutes.includes(
+      path
+    )
+  ) {
+    return path;
+  }
+
+  return "/";
+}
+
+function getLanguageUrl(code) {
+  const englishRoute =
+    getEnglishRoute();
+
+  let targetPath =
+    englishRoute;
+
+  if (code === "ES") {
+    targetPath =
+      englishRoute === "/"
+        ? "/es/"
+        : `/es${englishRoute}`;
+  }
+
+  return (
+    targetPath +
+    window.location.search +
+    window.location.hash
+  );
+}
+
+/* =========================================================
+   LANGUAGES
+   ========================================================= */
 
 const languages = [
   {
     code: "EN",
     name: "English",
     flag: "gb",
-    current: true
+    available: true
   },
   {
     code: "ES",
     name: "Español",
-    flag: "es"
+    flag: "es",
+    available: true
   },
   {
     code: "DE",
     name: "Deutsch",
-    flag: "de"
+    flag: "de",
+    available: false
   },
   {
     code: "FR",
     name: "Français",
-    flag: "fr"
+    flag: "fr",
+    available: false
   },
   {
     code: "NL",
     name: "Nederlands",
-    flag: "nl"
+    flag: "nl",
+    available: false
   },
   {
     code: "IT",
     name: "Italiano",
-    flag: "it"
+    flag: "it",
+    available: false
   },
   {
     code: "PT",
     name: "Português",
-    flag: "pt"
+    flag: "pt",
+    available: false
   },
   {
     code: "PL",
     name: "Polski",
-    flag: "pl"
+    flag: "pl",
+    available: false
   },
   {
     code: "SV",
     name: "Svenska",
-    flag: "se"
+    flag: "se",
+    available: false
   },
   {
     code: "DA",
     name: "Dansk",
-    flag: "dk"
+    flag: "dk",
+    available: false
   },
   {
     code: "NO",
     name: "Norsk",
-    flag: "no"
+    flag: "no",
+    available: false
   },
   {
     code: "FI",
     name: "Suomi",
-    flag: "fi"
+    flag: "fi",
+    available: false
   },
   {
     code: "EL",
     name: "Ελληνικά",
-    flag: "gr"
+    flag: "gr",
+    available: false
   }
 ];
 
 const languageSwitchers = [];
+
+/* =========================================================
+   LANGUAGE MENU HELPERS
+   ========================================================= */
 
 function closeLanguageMenus(
   except = null
 ) {
   languageSwitchers.forEach(
     (switcher) => {
-      if (switcher === except) {
+      if (
+        switcher === except
+      ) {
         return;
       }
 
@@ -269,15 +450,14 @@ function closeLanguageMenus(
         "is-open"
       );
 
-      const trigger =
-        switcher.querySelector(
+      switcher
+        .querySelector(
           ".language-trigger"
+        )
+        ?.setAttribute(
+          "aria-expanded",
+          "false"
         );
-
-      trigger?.setAttribute(
-        "aria-expanded",
-        "false"
-      );
     }
   );
 }
@@ -371,13 +551,17 @@ function buildLanguageSwitcher(
   placeholder
 ) {
   const switcher =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
 
   switcher.className =
     "language-switcher";
 
   const trigger =
-    document.createElement("button");
+    document.createElement(
+      "button"
+    );
 
   trigger.type =
     "button";
@@ -387,7 +571,7 @@ function buildLanguageSwitcher(
 
   trigger.setAttribute(
     "aria-label",
-    "Choose website language. English is currently active."
+    interfaceText.chooseLanguage
   );
 
   trigger.setAttribute(
@@ -403,8 +587,9 @@ function buildLanguageSwitcher(
   const currentLanguage =
     languages.find(
       (language) =>
-        language.current
-    );
+        language.code ===
+        currentLanguageCode
+    ) || languages[0];
 
   trigger.appendChild(
     createFlagElement(
@@ -433,7 +618,9 @@ function buildLanguageSwitcher(
   /* MENU */
 
   const menu =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
 
   menu.className =
     "language-menu";
@@ -452,7 +639,7 @@ function buildLanguageSwitcher(
     "language-menu-title";
 
   menuTitle.textContent =
-    "Select language";
+    interfaceText.menuTitle;
 
   const options =
     document.createElement(
@@ -471,12 +658,14 @@ function buildLanguageSwitcher(
     "language-note";
 
   note.textContent =
-    "English is currently available. Additional European language versions will become available as their professional translations are completed.";
-
-  /* OPTIONS */
+    interfaceText.note;
 
   languages.forEach(
     (language) => {
+      const isCurrent =
+        language.code ===
+        currentLanguageCode;
+
       const option =
         document.createElement(
           "button"
@@ -488,7 +677,7 @@ function buildLanguageSwitcher(
       option.className =
         "language-option" +
         (
-          language.current
+          isCurrent
             ? " is-current"
             : ""
         );
@@ -498,11 +687,22 @@ function buildLanguageSwitcher(
         "menuitem"
       );
 
+      if (
+        !language.available
+      ) {
+        option.setAttribute(
+          "aria-disabled",
+          "true"
+        );
+      }
+
       option.setAttribute(
         "aria-label",
-        language.current
-          ? `${language.name}, currently active`
-          : `${language.name}, coming soon`
+        isCurrent
+          ? `${language.name}, ${interfaceText.active.toLowerCase()}`
+          : language.available
+            ? `${language.name}, ${interfaceText.available.toLowerCase()}`
+            : `${language.name}, ${interfaceText.soon.toLowerCase()}`
       );
 
       const flag =
@@ -541,9 +741,11 @@ function buildLanguageSwitcher(
         "language-option-status";
 
       status.textContent =
-        language.current
-          ? "Active"
-          : "Soon";
+        isCurrent
+          ? interfaceText.active
+          : language.available
+            ? interfaceText.available
+            : interfaceText.soon;
 
       option.appendChild(flag);
       option.appendChild(name);
@@ -552,19 +754,29 @@ function buildLanguageSwitcher(
       option.addEventListener(
         "click",
         () => {
-          if (
-            language.current
-          ) {
+          if (isCurrent) {
             note.textContent =
-              "English is currently active.";
+              interfaceText.currentMessage;
 
             closeLanguageMenus();
 
             return;
           }
 
+          if (
+            language.available
+          ) {
+            window.location.assign(
+              getLanguageUrl(
+                language.code
+              )
+            );
+
+            return;
+          }
+
           note.textContent =
-            `${language.name} will become available once the professional translation is complete. English remains active for now.`;
+            interfaceText.comingSoon;
         }
       );
 
@@ -660,7 +872,9 @@ document.addEventListener(
 document.addEventListener(
   "keydown",
   (event) => {
-    if (event.key === "Escape") {
+    if (
+      event.key === "Escape"
+    ) {
       closeMenu();
       closeLanguageMenus();
     }
@@ -737,12 +951,13 @@ if (
    FOOTER YEAR
    ========================================================= */
 
-const yearElement =
-  document.querySelector(
+document
+  .querySelectorAll(
     "[data-current-year]"
+  )
+  .forEach(
+    (yearElement) => {
+      yearElement.textContent =
+        new Date().getFullYear();
+    }
   );
-
-if (yearElement) {
-  yearElement.textContent =
-    new Date().getFullYear();
-}
