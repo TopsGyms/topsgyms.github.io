@@ -22,22 +22,24 @@ const mobileLinks =
    CURRENT LANGUAGE
    ========================================================= */
 
-const isSpanishPage =
-  window.location.pathname === "/es" ||
-  window.location.pathname.startsWith(
-    "/es/"
-  );
+const documentLanguage =
+  (
+    document.documentElement.lang ||
+    "en"
+  ).toLowerCase();
 
 const currentLanguageCode =
-  isSpanishPage
+  documentLanguage.startsWith("es")
     ? "ES"
     : "EN";
 
 const interfaceText =
   currentLanguageCode === "ES"
     ? {
-        openMenu: "Abrir menú",
-        closeMenu: "Cerrar menú",
+        openMenu:
+          "Abrir menú",
+        closeMenu:
+          "Cerrar menú",
         chooseLanguage:
           "Elegir idioma del sitio web.",
         menuTitle:
@@ -53,11 +55,15 @@ const interfaceText =
         comingSoon:
           "Este idioma estará disponible cuando se complete su traducción profesional.",
         note:
-          "Inglés y español están disponibles actualmente. Se añadirán más idiomas europeos cuando sus traducciones profesionales estén completas."
+          "Inglés y español están disponibles actualmente. Se añadirán más idiomas europeos cuando sus traducciones profesionales estén completas.",
+        englishOnlyNote:
+          "Esta página está disponible actualmente solo en inglés. El español está disponible en las páginas principales de TopsGyms."
       }
     : {
-        openMenu: "Open menu",
-        closeMenu: "Close menu",
+        openMenu:
+          "Open menu",
+        closeMenu:
+          "Close menu",
         chooseLanguage:
           "Choose website language.",
         menuTitle:
@@ -73,7 +79,9 @@ const interfaceText =
         comingSoon:
           "This language will become available once its professional translation is complete.",
         note:
-          "English and Spanish are currently available. Additional European languages will be added as their professional translations are completed."
+          "English and Spanish are currently available. Additional European languages will be added as their professional translations are completed.",
+        englishOnlyNote:
+          "This page is currently available in English only. Spanish is available on the main TopsGyms pages."
       };
 
 /* =========================================================
@@ -81,6 +89,7 @@ const interfaceText =
    ========================================================= */
 
 function updateHeader() {
+
   if (!header) {
     return;
   }
@@ -106,6 +115,7 @@ window.addEventListener(
    ========================================================= */
 
 function closeMenu() {
+
   if (
     !menuButton ||
     !mobileNavigation ||
@@ -142,6 +152,7 @@ function closeMenu() {
 }
 
 function openMenu() {
+
   if (
     !menuButton ||
     !mobileNavigation ||
@@ -178,6 +189,7 @@ function openMenu() {
 }
 
 if (menuButton) {
+
   menuButton.setAttribute(
     "aria-label",
     interfaceText.openMenu
@@ -187,6 +199,7 @@ if (menuButton) {
 menuButton?.addEventListener(
   "click",
   () => {
+
     const isOpen =
       menuButton.classList.contains(
         "is-open"
@@ -200,17 +213,23 @@ menuButton?.addEventListener(
   }
 );
 
-mobileLinks.forEach((link) => {
-  link.addEventListener(
-    "click",
-    closeMenu
-  );
-});
+mobileLinks.forEach(
+  (link) => {
+
+    link.addEventListener(
+      "click",
+      closeMenu
+    );
+  }
+);
 
 window.addEventListener(
   "resize",
   () => {
-    if (window.innerWidth > 1050) {
+
+    if (
+      window.innerWidth > 1050
+    ) {
       closeMenu();
     }
   }
@@ -227,30 +246,35 @@ document
   .querySelectorAll(
     'a[href="#"]'
   )
-  .forEach((link) => {
-    const label =
-      link.textContent
-        .trim()
-        .toLowerCase();
+  .forEach(
+    (link) => {
 
-    if (label !== "linkedin") {
-      return;
+      const label =
+        link.textContent
+          .trim()
+          .toLowerCase();
+
+      if (
+        label !== "linkedin"
+      ) {
+        return;
+      }
+
+      link.href =
+        linkedInUrl;
+
+      link.target =
+        "_blank";
+
+      link.rel =
+        "noopener noreferrer";
+
+      link.setAttribute(
+        "aria-label",
+        "Sofie Tops on LinkedIn"
+      );
     }
-
-    link.href =
-      linkedInUrl;
-
-    link.target =
-      "_blank";
-
-    link.rel =
-      "noopener noreferrer";
-
-    link.setAttribute(
-      "aria-label",
-      "Sofie Tops on LinkedIn"
-    );
-  });
+  );
 
 /* =========================================================
    LANGUAGE ROUTING
@@ -265,11 +289,16 @@ const translatedRoutes = [
   "/contact/"
 ];
 
-function normalizePath(pathname) {
+function normalizePath(
+  pathname
+) {
+
   let path =
     pathname || "/";
 
-  if (!path.startsWith("/")) {
+  if (
+    !path.startsWith("/")
+  ) {
     path =
       `/${path}`;
   }
@@ -284,32 +313,61 @@ function normalizePath(pathname) {
   return path;
 }
 
-function getEnglishRoute() {
+function getCurrentRouteInfo() {
+
   let path =
     normalizePath(
       window.location.pathname
     );
 
   if (
-    path === "/es/" ||
-    path === "/es"
+    currentLanguageCode === "ES"
   ) {
-    return "/";
-  }
 
-  if (
-    path.startsWith("/es/")
-  ) {
-    path =
-      path.slice(3);
-
-    if (!path.startsWith("/")) {
-      path =
-        `/${path}`;
+    if (
+      path === "/es/"
+    ) {
+      return {
+        translatable: true,
+        englishRoute: "/"
+      };
     }
 
-    path =
-      normalizePath(path);
+    if (
+      path.startsWith("/es/")
+    ) {
+
+      let englishRoute =
+        path.slice(3);
+
+      if (
+        !englishRoute.startsWith("/")
+      ) {
+        englishRoute =
+          `/${englishRoute}`;
+      }
+
+      englishRoute =
+        normalizePath(
+          englishRoute
+        );
+
+      if (
+        translatedRoutes.includes(
+          englishRoute
+        )
+      ) {
+        return {
+          translatable: true,
+          englishRoute
+        };
+      }
+    }
+
+    return {
+      translatable: false,
+      englishRoute: null
+    };
   }
 
   if (
@@ -317,20 +375,79 @@ function getEnglishRoute() {
       path
     )
   ) {
-    return path;
+    return {
+      translatable: true,
+      englishRoute: path
+    };
   }
 
-  return "/";
+  return {
+    translatable: false,
+    englishRoute: null
+  };
 }
 
-function getLanguageUrl(code) {
+const currentRouteInfo =
+  getCurrentRouteInfo();
+
+function isLanguageAvailable(
+  code
+) {
+
+  if (
+    code === currentLanguageCode
+  ) {
+    return true;
+  }
+
+  if (
+    code === "EN"
+  ) {
+
+    return (
+      currentLanguageCode === "ES" &&
+      currentRouteInfo.translatable
+    );
+  }
+
+  if (
+    code === "ES"
+  ) {
+
+    return (
+      currentLanguageCode === "EN" &&
+      currentRouteInfo.translatable
+    );
+  }
+
+  return false;
+}
+
+function getLanguageUrl(
+  code
+) {
+
+  if (
+    !currentRouteInfo.translatable ||
+    !currentRouteInfo.englishRoute
+  ) {
+    return (
+      window.location.pathname +
+      window.location.search +
+      window.location.hash
+    );
+  }
+
   const englishRoute =
-    getEnglishRoute();
+    currentRouteInfo.englishRoute;
 
   let targetPath =
     englishRoute;
 
-  if (code === "ES") {
+  if (
+    code === "ES"
+  ) {
+
     targetPath =
       englishRoute === "/"
         ? "/es/"
@@ -353,83 +470,84 @@ const languages = [
     code: "EN",
     name: "English",
     flag: "gb",
-    available: true
+    published: true
   },
   {
     code: "ES",
     name: "Español",
     flag: "es",
-    available: true
+    published: true
   },
   {
     code: "DE",
     name: "Deutsch",
     flag: "de",
-    available: false
+    published: false
   },
   {
     code: "FR",
     name: "Français",
     flag: "fr",
-    available: false
+    published: false
   },
   {
     code: "NL",
     name: "Nederlands",
     flag: "nl",
-    available: false
+    published: false
   },
   {
     code: "IT",
     name: "Italiano",
     flag: "it",
-    available: false
+    published: false
   },
   {
     code: "PT",
     name: "Português",
     flag: "pt",
-    available: false
+    published: false
   },
   {
     code: "PL",
     name: "Polski",
     flag: "pl",
-    available: false
+    published: false
   },
   {
     code: "SV",
     name: "Svenska",
     flag: "se",
-    available: false
+    published: false
   },
   {
     code: "DA",
     name: "Dansk",
     flag: "dk",
-    available: false
+    published: false
   },
   {
     code: "NO",
     name: "Norsk",
     flag: "no",
-    available: false
+    published: false
   },
   {
     code: "FI",
     name: "Suomi",
     flag: "fi",
-    available: false
+    published: false
   },
   {
     code: "EL",
     name: "Ελληνικά",
     flag: "gr",
-    available: false
+    published: false
   }
 ];
 
-const languageSwitchers = [];
+const languageSwitchers =
+  [];
 
 /* =========================================================
    LANGUAGE MENU HELPERS
@@ -438,8 +556,10 @@ const languageSwitchers = [];
 function closeLanguageMenus(
   except = null
 ) {
+
   languageSwitchers.forEach(
     (switcher) => {
+
       if (
         switcher === except
       ) {
@@ -470,6 +590,7 @@ function createFlagElement(
   flagId,
   className
 ) {
+
   const svg =
     document.createElementNS(
       "http://www.w3.org/2000/svg",
@@ -538,7 +659,9 @@ function createFlagElement(
     `/assets/img/flags.svg#${flagId}`
   );
 
-  svg.appendChild(use);
+  svg.appendChild(
+    use
+  );
 
   return svg;
 }
@@ -550,6 +673,7 @@ function createFlagElement(
 function buildLanguageSwitcher(
   placeholder
 ) {
+
   const switcher =
     document.createElement(
       "div"
@@ -589,7 +713,8 @@ function buildLanguageSwitcher(
       (language) =>
         language.code ===
         currentLanguageCode
-    ) || languages[0];
+    ) ||
+    languages[0];
 
   trigger.appendChild(
     createFlagElement(
@@ -658,13 +783,22 @@ function buildLanguageSwitcher(
     "language-note";
 
   note.textContent =
-    interfaceText.note;
+    currentRouteInfo.translatable
+      ? interfaceText.note
+      : interfaceText.englishOnlyNote;
 
   languages.forEach(
     (language) => {
+
       const isCurrent =
         language.code ===
         currentLanguageCode;
+
+      const availableHere =
+        language.published &&
+        isLanguageAvailable(
+          language.code
+        );
 
       const option =
         document.createElement(
@@ -688,8 +822,10 @@ function buildLanguageSwitcher(
       );
 
       if (
-        !language.available
+        !availableHere &&
+        !isCurrent
       ) {
+
         option.setAttribute(
           "aria-disabled",
           "true"
@@ -700,7 +836,7 @@ function buildLanguageSwitcher(
         "aria-label",
         isCurrent
           ? `${language.name}, ${interfaceText.active.toLowerCase()}`
-          : language.available
+          : availableHere
             ? `${language.name}, ${interfaceText.available.toLowerCase()}`
             : `${language.name}, ${interfaceText.soon.toLowerCase()}`
       );
@@ -730,7 +866,9 @@ function buildLanguageSwitcher(
       code.textContent =
         language.code;
 
-      name.appendChild(code);
+      name.appendChild(
+        code
+      );
 
       const status =
         document.createElement(
@@ -743,18 +881,30 @@ function buildLanguageSwitcher(
       status.textContent =
         isCurrent
           ? interfaceText.active
-          : language.available
+          : availableHere
             ? interfaceText.available
             : interfaceText.soon;
 
-      option.appendChild(flag);
-      option.appendChild(name);
-      option.appendChild(status);
+      option.appendChild(
+        flag
+      );
+
+      option.appendChild(
+        name
+      );
+
+      option.appendChild(
+        status
+      );
 
       option.addEventListener(
         "click",
         () => {
-          if (isCurrent) {
+
+          if (
+            isCurrent
+          ) {
+
             note.textContent =
               interfaceText.currentMessage;
 
@@ -764,13 +914,25 @@ function buildLanguageSwitcher(
           }
 
           if (
-            language.available
+            availableHere
           ) {
+
             window.location.assign(
               getLanguageUrl(
                 language.code
               )
             );
+
+            return;
+          }
+
+          if (
+            language.published &&
+            !currentRouteInfo.translatable
+          ) {
+
+            note.textContent =
+              interfaceText.englishOnlyNote;
 
             return;
           }
@@ -803,6 +965,7 @@ function buildLanguageSwitcher(
   trigger.addEventListener(
     "click",
     (event) => {
+
       event.stopPropagation();
 
       const willOpen =
@@ -829,6 +992,7 @@ function buildLanguageSwitcher(
   menu.addEventListener(
     "click",
     (event) => {
+
       event.stopPropagation();
     }
   );
@@ -861,6 +1025,7 @@ document
 document.addEventListener(
   "click",
   () => {
+
     closeLanguageMenus();
   }
 );
@@ -872,9 +1037,11 @@ document.addEventListener(
 document.addEventListener(
   "keydown",
   (event) => {
+
     if (
       event.key === "Escape"
     ) {
+
       closeMenu();
       closeLanguageMenus();
     }
@@ -899,14 +1066,17 @@ if (
     )
     .matches
 ) {
+
   const revealObserver =
     new IntersectionObserver(
       (
         entries,
         observer
       ) => {
+
         entries.forEach(
           (entry) => {
+
             if (
               !entry.isIntersecting
             ) {
@@ -932,14 +1102,18 @@ if (
 
   revealElements.forEach(
     (element) => {
+
       revealObserver.observe(
         element
       );
     }
   );
+
 } else {
+
   revealElements.forEach(
     (element) => {
+
       element.classList.add(
         "is-visible"
       );
@@ -957,6 +1131,7 @@ document
   )
   .forEach(
     (yearElement) => {
+
       yearElement.textContent =
         new Date().getFullYear();
     }
