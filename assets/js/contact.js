@@ -9,8 +9,59 @@ const contactStatus =
   );
 
 if (contactForm) {
+
   const endpoint =
     "https://formspree.io/f/mjyvwgba";
+
+  /* =========================================================
+     LANGUAGE
+     ========================================================= */
+
+  const isSpanish =
+    contactForm.dataset.formLanguage === "es" ||
+    window.location.pathname === "/es" ||
+    window.location.pathname.startsWith(
+      "/es/"
+    );
+
+  const text =
+    isSpanish
+      ? {
+          privacyPrefix:
+            "He leído y comprendo la",
+          privacySuffix:
+            "y entiendo que TopsGyms procesará la información proporcionada para revisar y responder a esta consulta.",
+          sending:
+            "Enviando...",
+          success:
+            "Gracias. Tu consulta se ha enviado correctamente. TopsGyms la revisará personalmente y se pondrá en contacto contigo en breve.",
+          error:
+            "Ha ocurrido un problema al enviar tu consulta. Inténtalo de nuevo o escribe a sofie@topsgyms.com.",
+          subject:
+            "New TopsGyms website enquiry - Spanish",
+          language:
+            "Spanish"
+        }
+      : {
+          privacyPrefix:
+            "I have read and understand the",
+          privacySuffix:
+            "and understand that TopsGyms will process the information provided to review and respond to this enquiry.",
+          sending:
+            "Sending...",
+          success:
+            "Thank you. Your enquiry has been sent successfully. TopsGyms will review it personally and get back to you shortly.",
+          error:
+            "Something went wrong while sending your enquiry. Please try again or email sofie@topsgyms.com.",
+          subject:
+            "New TopsGyms website enquiry",
+          language:
+            "English"
+        };
+
+  /* =========================================================
+     ELEMENTS
+     ========================================================= */
 
   const submitButton =
     contactForm.querySelector(
@@ -23,7 +74,9 @@ if (contactForm) {
     );
 
   const consentLabel =
-    consentInput?.closest("label");
+    consentInput?.closest(
+      "label"
+    );
 
   const consentText =
     consentLabel?.querySelector(
@@ -43,13 +96,14 @@ if (contactForm) {
   contactForm.method =
     "POST";
 
-  /*
-    Privacy acknowledgement
-  */
+  /* =========================================================
+     PRIVACY ACKNOWLEDGEMENT
+     ========================================================= */
 
   if (consentText) {
+
     consentText.innerHTML = `
-      I have read and understand the
+      ${text.privacyPrefix}
       <a
         href="/privacy/"
         target="_blank"
@@ -62,17 +116,16 @@ if (contactForm) {
       >
         Privacy Policy
       </a>
-      and understand that TopsGyms will process
-      the information provided to review and
-      respond to this enquiry.
+      ${text.privacySuffix}
     `;
   }
 
-  /*
-    Accessible live status region
-  */
+  /* =========================================================
+     ACCESSIBLE STATUS
+     ========================================================= */
 
   if (contactStatus) {
+
     contactStatus.setAttribute(
       "aria-live",
       "polite"
@@ -99,6 +152,7 @@ if (contactForm) {
      ========================================================= */
 
   function clearStatus() {
+
     if (!contactStatus) {
       return;
     }
@@ -128,6 +182,7 @@ if (contactForm) {
     message,
     type = "success"
   ) {
+
     if (!contactStatus) {
       return;
     }
@@ -161,6 +216,7 @@ if (contactForm) {
 
     window.requestAnimationFrame(
       () => {
+
         contactStatus.focus({
           preventScroll: true
         });
@@ -175,6 +231,7 @@ if (contactForm) {
   function setSubmitting(
     isSubmitting
   ) {
+
     if (!submitButton) {
       return;
     }
@@ -188,11 +245,14 @@ if (contactForm) {
     );
 
     if (isSubmitting) {
+
       submitButton.textContent =
-        "Sending...";
+        text.sending;
+
     } else if (
       originalSubmitText
     ) {
+
       submitButton.innerHTML =
         originalSubmitText;
     }
@@ -205,6 +265,7 @@ if (contactForm) {
   contactForm.addEventListener(
     "submit",
     async (event) => {
+
       event.preventDefault();
 
       clearStatus();
@@ -212,6 +273,7 @@ if (contactForm) {
       if (
         !contactForm.checkValidity()
       ) {
+
         contactForm.reportValidity();
 
         const invalidField =
@@ -227,6 +289,7 @@ if (contactForm) {
       setSubmitting(true);
 
       try {
+
         const formData =
           new FormData(
             contactForm
@@ -234,7 +297,12 @@ if (contactForm) {
 
         formData.append(
           "_subject",
-          "New TopsGyms website enquiry"
+          text.subject
+        );
+
+        formData.append(
+          "Website language",
+          text.language
         );
 
         const response =
@@ -251,23 +319,27 @@ if (contactForm) {
           );
 
         if (!response.ok) {
+
           throw new Error(
             "Submission failed"
           );
         }
 
         setStatus(
-          "Thank you. Your enquiry has been sent successfully. TopsGyms will review it personally and get back to you shortly."
+          text.success
         );
 
         contactForm.reset();
 
       } catch (error) {
+
         setStatus(
-          "Something went wrong while sending your enquiry. Please try again or email sofie@topsgyms.com.",
+          text.error,
           "error"
         );
+
       } finally {
+
         setSubmitting(false);
       }
     }
@@ -282,28 +354,31 @@ document
   .querySelectorAll(
     "[data-contact-faq-question]"
   )
-  .forEach((button) => {
-    button.addEventListener(
-      "click",
-      () => {
-        const answer =
-          button
-            .nextElementSibling;
+  .forEach(
+    (button) => {
 
-        const isOpen =
-          button.getAttribute(
-            "aria-expanded"
-          ) === "true";
+      button.addEventListener(
+        "click",
+        () => {
 
-        button.setAttribute(
-          "aria-expanded",
-          String(!isOpen)
-        );
+          const answer =
+            button.nextElementSibling;
 
-        answer?.classList.toggle(
-          "is-open",
-          !isOpen
-        );
-      }
-    );
-  });
+          const isOpen =
+            button.getAttribute(
+              "aria-expanded"
+            ) === "true";
+
+          button.setAttribute(
+            "aria-expanded",
+            String(!isOpen)
+          );
+
+          answer?.classList.toggle(
+            "is-open",
+            !isOpen
+          );
+        }
+      );
+    }
+  );
