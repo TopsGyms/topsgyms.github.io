@@ -30,9 +30,7 @@ updateHeader();
 window.addEventListener(
   "scroll",
   updateHeader,
-  {
-    passive: true
-  }
+  { passive: true }
 );
 
 /* =========================================================
@@ -48,17 +46,9 @@ function closeMenu() {
     return;
   }
 
-  menuButton.classList.remove(
-    "is-open"
-  );
-
-  mobileNavigation.classList.remove(
-    "is-open"
-  );
-
-  header.classList.remove(
-    "menu-active"
-  );
+  menuButton.classList.remove("is-open");
+  mobileNavigation.classList.remove("is-open");
+  header.classList.remove("menu-active");
 
   menuButton.setAttribute(
     "aria-expanded",
@@ -84,17 +74,9 @@ function openMenu() {
     return;
   }
 
-  menuButton.classList.add(
-    "is-open"
-  );
-
-  mobileNavigation.classList.add(
-    "is-open"
-  );
-
-  header.classList.add(
-    "menu-active"
-  );
+  menuButton.classList.add("is-open");
+  mobileNavigation.classList.add("is-open");
+  header.classList.add("menu-active");
 
   menuButton.setAttribute(
     "aria-expanded",
@@ -114,12 +96,11 @@ function openMenu() {
 menuButton?.addEventListener(
   "click",
   () => {
-    const isOpen =
+    if (
       menuButton.classList.contains(
         "is-open"
-      );
-
-    if (isOpen) {
+      )
+    ) {
       closeMenu();
     } else {
       openMenu();
@@ -144,20 +125,39 @@ window.addEventListener(
 );
 
 /* =========================================================
-   LANGUAGES
+   LINKEDIN
    ========================================================= */
 
-/*
-  Flags use native Unicode emoji.
+const linkedInUrl =
+  "https://www.linkedin.com/in/sofie-tops-3b7aa0432/";
 
-  This means:
-  - no external FlagCDN requests;
-  - no extra third-party privacy exposure;
-  - fewer network requests;
-  - faster loading.
+document
+  .querySelectorAll('a[href="#"]')
+  .forEach((link) => {
+    if (
+      link.textContent.trim()
+        .toLowerCase() !==
+      "linkedin"
+    ) {
+      return;
+    }
 
-  Language codes use ISO language codes.
-*/
+    link.href = linkedInUrl;
+
+    link.target = "_blank";
+
+    link.rel =
+      "noopener noreferrer";
+
+    link.setAttribute(
+      "aria-label",
+      "Sofie Tops on LinkedIn"
+    );
+  });
+
+/* =========================================================
+   LANGUAGES
+   ========================================================= */
 
 const languages = [
   {
@@ -243,59 +243,45 @@ function closeLanguageMenus(
         "is-open"
       );
 
-      const trigger =
-        switcher.querySelector(
+      switcher
+        .querySelector(
           ".language-trigger"
+        )
+        ?.setAttribute(
+          "aria-expanded",
+          "false"
         );
-
-      trigger?.setAttribute(
-        "aria-expanded",
-        "false"
-      );
     }
   );
 }
 
 function createFlagElement(
   flag,
-  className,
-  label = ""
+  className
 ) {
-  const span =
+  const element =
     document.createElement("span");
 
-  span.className = className;
+  element.className = className;
 
-  span.textContent = flag;
+  element.textContent = flag;
 
-  span.setAttribute(
+  element.setAttribute(
     "aria-hidden",
-    label ? "false" : "true"
+    "true"
   );
 
-  if (label) {
-    span.setAttribute(
-      "aria-label",
-      label
-    );
-  }
+  element.style.display = "grid";
+  element.style.placeItems = "center";
+  element.style.width = "24px";
+  element.style.height = "18px";
+  element.style.fontSize = "18px";
+  element.style.lineHeight = "1";
+  element.style.borderRadius = "0";
+  element.style.boxShadow = "none";
+  element.style.flexShrink = "0";
 
-  /*
-    Inline styling intentionally overrides the
-    older image-specific flag CSS.
-  */
-
-  span.style.display = "grid";
-  span.style.placeItems = "center";
-  span.style.width = "24px";
-  span.style.height = "18px";
-  span.style.fontSize = "18px";
-  span.style.lineHeight = "1";
-  span.style.borderRadius = "0";
-  span.style.boxShadow = "none";
-  span.style.flexShrink = "0";
-
-  return span;
+  return element;
 }
 
 function buildLanguageSwitcher(
@@ -317,7 +303,7 @@ function buildLanguageSwitcher(
 
   trigger.setAttribute(
     "aria-label",
-    "Choose website language"
+    "Choose website language. English is currently active."
   );
 
   trigger.setAttribute(
@@ -327,12 +313,8 @@ function buildLanguageSwitcher(
 
   trigger.setAttribute(
     "aria-haspopup",
-    "true"
+    "menu"
   );
-
-  /*
-    Current language flag
-  */
 
   const currentLanguage =
     languages.find(
@@ -340,12 +322,12 @@ function buildLanguageSwitcher(
         language.current
     );
 
-  const triggerFlag =
+  trigger.appendChild(
     createFlagElement(
       currentLanguage.flag,
-      "language-trigger-flag",
-      currentLanguage.name
-    );
+      "language-trigger-flag"
+    )
+  );
 
   const triggerChevron =
     document.createElement("span");
@@ -359,16 +341,8 @@ function buildLanguageSwitcher(
   );
 
   trigger.appendChild(
-    triggerFlag
-  );
-
-  trigger.appendChild(
     triggerChevron
   );
-
-  /*
-    Language menu
-  */
 
   const menu =
     document.createElement("div");
@@ -381,13 +355,13 @@ function buildLanguageSwitcher(
     "menu"
   );
 
-  const title =
+  const menuTitle =
     document.createElement("div");
 
-  title.className =
+  menuTitle.className =
     "language-menu-title";
 
-  title.textContent =
+  menuTitle.textContent =
     "Select language";
 
   const options =
@@ -404,14 +378,6 @@ function buildLanguageSwitcher(
 
   note.textContent =
     "English is currently available. Additional European language versions will become available as their professional translations are completed.";
-
-  menu.appendChild(title);
-  menu.appendChild(options);
-  menu.appendChild(note);
-
-  /*
-    Language options
-  */
 
   languages.forEach(
     (language) => {
@@ -442,11 +408,12 @@ function buildLanguageSwitcher(
           : `${language.name}, coming soon`
       );
 
-      const flag =
+      option.appendChild(
         createFlagElement(
           language.flag,
           "language-option-flag"
-        );
+        )
+      );
 
       const name =
         document.createElement(
@@ -482,7 +449,6 @@ function buildLanguageSwitcher(
           ? "Active"
           : "Soon";
 
-      option.appendChild(flag);
       option.appendChild(name);
       option.appendChild(status);
 
@@ -505,15 +471,13 @@ function buildLanguageSwitcher(
         }
       );
 
-      options.appendChild(
-        option
-      );
+      options.appendChild(option);
     }
   );
 
-  /*
-    Open / close
-  */
+  menu.appendChild(menuTitle);
+  menu.appendChild(options);
+  menu.appendChild(note);
 
   trigger.addEventListener(
     "click",
@@ -548,13 +512,8 @@ function buildLanguageSwitcher(
     }
   );
 
-  switcher.appendChild(
-    trigger
-  );
-
-  switcher.appendChild(
-    menu
-  );
+  switcher.appendChild(trigger);
+  switcher.appendChild(menu);
 
   placeholder.replaceWith(
     switcher
@@ -604,8 +563,7 @@ const revealElements =
   );
 
 if (
-  "IntersectionObserver" in
-    window &&
+  "IntersectionObserver" in window &&
   !window
     .matchMedia(
       "(prefers-reduced-motion: reduce)"
