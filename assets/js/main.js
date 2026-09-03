@@ -29,12 +29,39 @@ const documentLanguage =
   ).toLowerCase();
 
 const currentLanguageCode =
-  documentLanguage.startsWith("es")
-    ? "ES"
-    : "EN";
+  documentLanguage.startsWith("de")
+    ? "DE"
+    : documentLanguage.startsWith("es")
+      ? "ES"
+      : "EN";
 
 const interfaceText =
-  currentLanguageCode === "ES"
+  currentLanguageCode === "DE"
+    ? {
+        openMenu:
+          "Menü öffnen",
+        closeMenu:
+          "Menü schließen",
+        chooseLanguage:
+          "Sprache der Website wählen.",
+        menuTitle:
+          "Sprache auswählen",
+        active:
+          "Aktiv",
+        available:
+          "Verfügbar",
+        soon:
+          "Demnächst",
+        currentMessage:
+          "Diese Sprache ist derzeit ausgewählt.",
+        comingSoon:
+          "Diese Sprache wird verfügbar, sobald die professionelle Übersetzung abgeschlossen ist.",
+        note:
+          "Englisch, Spanisch und Deutsch sind derzeit verfügbar. Weitere europäische Sprachen folgen, sobald ihre professionellen Übersetzungen abgeschlossen sind.",
+        englishOnlyNote:
+          "Diese Seite ist derzeit nur auf Englisch verfügbar. Die Hauptseiten von TopsGyms sind auch auf Spanisch und Deutsch verfügbar."
+      }
+    : currentLanguageCode === "ES"
     ? {
         openMenu:
           "Abrir menú",
@@ -55,9 +82,9 @@ const interfaceText =
         comingSoon:
           "Este idioma estará disponible cuando se complete su traducción profesional.",
         note:
-          "Inglés y español están disponibles actualmente. Se añadirán más idiomas europeos cuando sus traducciones profesionales estén completas.",
+          "Inglés, español y alemán están disponibles actualmente. Se añadirán más idiomas europeos cuando sus traducciones profesionales estén completas.",
         englishOnlyNote:
-          "Esta página está disponible actualmente solo en inglés. El español está disponible en las páginas principales de TopsGyms."
+          "Esta página está disponible actualmente solo en inglés. El español y el alemán están disponibles en las páginas principales de TopsGyms."
       }
     : {
         openMenu:
@@ -79,9 +106,9 @@ const interfaceText =
         comingSoon:
           "This language will become available once its professional translation is complete.",
         note:
-          "English and Spanish are currently available. Additional European languages will be added as their professional translations are completed.",
+          "English, Spanish and German are currently available. Additional European languages will be added as their professional translations are completed.",
         englishOnlyNote:
-          "This page is currently available in English only. Spanish is available on the main TopsGyms pages."
+          "This page is currently available in English only. Spanish and German are available on the main TopsGyms pages."
       };
 
 /* =========================================================
@@ -271,7 +298,9 @@ document
 
       link.setAttribute(
         "aria-label",
-        "Sofie Tops on LinkedIn"
+        currentLanguageCode === "DE"
+          ? "Sofie Tops auf LinkedIn"
+          : "Sofie Tops on LinkedIn"
       );
     }
   );
@@ -321,11 +350,15 @@ function getCurrentRouteInfo() {
     );
 
   if (
-    currentLanguageCode === "ES"
+    currentLanguageCode === "ES" ||
+    currentLanguageCode === "DE"
   ) {
 
+    const languagePrefix =
+      `/${currentLanguageCode.toLowerCase()}`;
+
     if (
-      path === "/es/"
+      path === `${languagePrefix}/`
     ) {
       return {
         translatable: true,
@@ -334,11 +367,11 @@ function getCurrentRouteInfo() {
     }
 
     if (
-      path.startsWith("/es/")
+      path.startsWith(`${languagePrefix}/`)
     ) {
 
       let englishRoute =
-        path.slice(3);
+        path.slice(languagePrefix.length);
 
       if (
         !englishRoute.startsWith("/")
@@ -400,27 +433,10 @@ function isLanguageAvailable(
     return true;
   }
 
-  if (
-    code === "EN"
-  ) {
-
-    return (
-      currentLanguageCode === "ES" &&
-      currentRouteInfo.translatable
-    );
-  }
-
-  if (
-    code === "ES"
-  ) {
-
-    return (
-      currentLanguageCode === "EN" &&
-      currentRouteInfo.translatable
-    );
-  }
-
-  return false;
+  return (
+    ["EN", "ES", "DE"].includes(code) &&
+    currentRouteInfo.translatable
+  );
 }
 
 function getLanguageUrl(
@@ -445,13 +461,12 @@ function getLanguageUrl(
     englishRoute;
 
   if (
-    code === "ES"
+    code === "ES" ||
+    code === "DE"
   ) {
 
     targetPath =
-      englishRoute === "/"
-        ? "/es/"
-        : `/es${englishRoute}`;
+      `/${code.toLowerCase()}${englishRoute}`;
   }
 
   return (
@@ -482,7 +497,7 @@ const languages = [
     code: "DE",
     name: "Deutsch",
     flag: "de",
-    published: false
+    published: true
   },
   {
     code: "FR",

@@ -8,6 +8,12 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Keep German compound words within the existing responsive grids. */
+html[lang="de"] {
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
 body {
   margin: 0;
   background: var(--color-off-white);
