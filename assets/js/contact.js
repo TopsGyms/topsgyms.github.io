@@ -17,6 +17,11 @@ if (contactForm) {
      LANGUAGE
      ========================================================= */
 
+  const isFrench =
+    contactForm.dataset.formLanguage === "fr" ||
+    window.location.pathname === "/fr" ||
+    window.location.pathname.startsWith("/fr/");
+
   const isGerman =
     contactForm.dataset.formLanguage === "de" ||
     window.location.pathname === "/de" ||
@@ -30,7 +35,24 @@ if (contactForm) {
     );
 
   const text =
-    isGerman
+    isFrench
+      ? {
+          privacyPrefix:
+            "J’ai lu et compris la",
+          privacySuffix:
+            "et je comprends que TopsGyms traitera les informations fournies afin d’étudier cette demande et d’y répondre.",
+          sending:
+            "Envoi en cours…",
+          success:
+            "Merci. Votre demande a bien été envoyée. TopsGyms l’étudiera personnellement et vous répondra prochainement.",
+          error:
+            "Un problème est survenu lors de l’envoi. Veuillez réessayer ou écrire à sofie@topsgyms.com.",
+          subject:
+            "New TopsGyms website enquiry - French",
+          language:
+            "French"
+        }
+      : isGerman
       ? {
           privacyPrefix:
             "Ich habe die",
@@ -136,7 +158,13 @@ if (contactForm) {
           font-weight: 600;
         "
       >
-        ${isGerman ? "Datenschutzerklärung (Englisch)" : "Privacy Policy"}
+        ${
+          isGerman
+            ? "Datenschutzerklärung (Englisch)"
+            : isFrench
+              ? "politique de confidentialité (en anglais)"
+              : "Privacy Policy"
+        }
       </a>
       ${text.privacySuffix}
     `;

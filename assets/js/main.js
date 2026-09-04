@@ -29,14 +29,41 @@ const documentLanguage =
   ).toLowerCase();
 
 const currentLanguageCode =
-  documentLanguage.startsWith("de")
-    ? "DE"
-    : documentLanguage.startsWith("es")
-      ? "ES"
-      : "EN";
+  documentLanguage.startsWith("fr")
+    ? "FR"
+    : documentLanguage.startsWith("de")
+      ? "DE"
+      : documentLanguage.startsWith("es")
+        ? "ES"
+        : "EN";
 
 const interfaceText =
-  currentLanguageCode === "DE"
+  currentLanguageCode === "FR"
+    ? {
+        openMenu:
+          "Ouvrir le menu",
+        closeMenu:
+          "Fermer le menu",
+        chooseLanguage:
+          "Choisir la langue du site.",
+        menuTitle:
+          "Sélectionner la langue",
+        active:
+          "Actif",
+        available:
+          "Disponible",
+        soon:
+          "Bientôt",
+        currentMessage:
+          "Cette langue est actuellement sélectionnée.",
+        comingSoon:
+          "Cette langue sera disponible lorsque sa traduction professionnelle sera terminée.",
+        note:
+          "L’anglais, l’espagnol, l’allemand et le français sont actuellement disponibles. D’autres langues européennes seront ajoutées une fois leur traduction professionnelle terminée.",
+        englishOnlyNote:
+          "Cette page est actuellement disponible uniquement en anglais. Les pages principales de TopsGyms sont également disponibles en espagnol, en allemand et en français."
+      }
+    : currentLanguageCode === "DE"
     ? {
         openMenu:
           "Menü öffnen",
@@ -57,9 +84,9 @@ const interfaceText =
         comingSoon:
           "Diese Sprache wird verfügbar, sobald die professionelle Übersetzung abgeschlossen ist.",
         note:
-          "Englisch, Spanisch und Deutsch sind derzeit verfügbar. Weitere europäische Sprachen folgen, sobald ihre professionellen Übersetzungen abgeschlossen sind.",
+          "Englisch, Spanisch, Deutsch und Französisch sind derzeit verfügbar. Weitere europäische Sprachen folgen, sobald ihre professionellen Übersetzungen abgeschlossen sind.",
         englishOnlyNote:
-          "Diese Seite ist derzeit nur auf Englisch verfügbar. Die Hauptseiten von TopsGyms sind auch auf Spanisch und Deutsch verfügbar."
+          "Diese Seite ist derzeit nur auf Englisch verfügbar. Die Hauptseiten von TopsGyms sind auch auf Spanisch, Deutsch und Französisch verfügbar."
       }
     : currentLanguageCode === "ES"
     ? {
@@ -82,9 +109,9 @@ const interfaceText =
         comingSoon:
           "Este idioma estará disponible cuando se complete su traducción profesional.",
         note:
-          "Inglés, español y alemán están disponibles actualmente. Se añadirán más idiomas europeos cuando sus traducciones profesionales estén completas.",
+          "Inglés, español, alemán y francés están disponibles actualmente. Se añadirán más idiomas europeos cuando sus traducciones profesionales estén completas.",
         englishOnlyNote:
-          "Esta página está disponible actualmente solo en inglés. El español y el alemán están disponibles en las páginas principales de TopsGyms."
+          "Esta página está disponible actualmente solo en inglés. El español, el alemán y el francés están disponibles en las páginas principales de TopsGyms."
       }
     : {
         openMenu:
@@ -106,9 +133,9 @@ const interfaceText =
         comingSoon:
           "This language will become available once its professional translation is complete.",
         note:
-          "English, Spanish and German are currently available. Additional European languages will be added as their professional translations are completed.",
+          "English, Spanish, German and French are currently available. Additional European languages will be added as their professional translations are completed.",
         englishOnlyNote:
-          "This page is currently available in English only. Spanish and German are available on the main TopsGyms pages."
+          "This page is currently available in English only. Spanish, German and French are available on the main TopsGyms pages."
       };
 
 /* =========================================================
@@ -300,7 +327,9 @@ document
         "aria-label",
         currentLanguageCode === "DE"
           ? "Sofie Tops auf LinkedIn"
-          : "Sofie Tops on LinkedIn"
+          : currentLanguageCode === "FR"
+            ? "Sofie Tops sur LinkedIn"
+            : "Sofie Tops on LinkedIn"
       );
     }
   );
@@ -351,7 +380,8 @@ function getCurrentRouteInfo() {
 
   if (
     currentLanguageCode === "ES" ||
-    currentLanguageCode === "DE"
+    currentLanguageCode === "DE" ||
+    currentLanguageCode === "FR"
   ) {
 
     const languagePrefix =
@@ -434,7 +464,7 @@ function isLanguageAvailable(
   }
 
   return (
-    ["EN", "ES", "DE"].includes(code) &&
+    ["EN", "ES", "DE", "FR"].includes(code) &&
     currentRouteInfo.translatable
   );
 }
@@ -462,7 +492,8 @@ function getLanguageUrl(
 
   if (
     code === "ES" ||
-    code === "DE"
+    code === "DE" ||
+    code === "FR"
   ) {
 
     targetPath =
@@ -503,7 +534,7 @@ const languages = [
     code: "FR",
     name: "Français",
     flag: "fr",
-    published: false
+    published: true
   },
   {
     code: "NL",

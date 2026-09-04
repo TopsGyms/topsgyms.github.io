@@ -12,6 +12,11 @@ if (scanForm) {
      LANGUAGE
      ========================================================= */
 
+  const isFrench =
+    scanForm.dataset.formLanguage === "fr" ||
+    window.location.pathname === "/fr" ||
+    window.location.pathname.startsWith("/fr/");
+
   const isGerman =
     scanForm.dataset.formLanguage === "de" ||
     window.location.pathname === "/de" ||
@@ -25,7 +30,24 @@ if (scanForm) {
     );
 
   const text =
-    isGerman
+    isFrench
+      ? {
+          privacyPrefix:
+            "J’ai lu et compris la",
+          privacySuffix:
+            "et je comprends que TopsGyms traitera les informations fournies afin d’étudier cette demande et d’y répondre.",
+          sending:
+            "Envoi en cours…",
+          success:
+            "Merci. Votre demande de Gym Opportunity Scan a bien été envoyée. TopsGyms l’étudiera personnellement et vous contactera prochainement.",
+          error:
+            "Un problème est survenu lors de l’envoi. Veuillez réessayer ou écrire à sofie@topsgyms.com.",
+          subject:
+            "New TopsGyms Gym Opportunity Scan request - French",
+          language:
+            "French"
+        }
+      : isGerman
       ? {
           privacyPrefix:
             "Ich habe die",
@@ -163,7 +185,13 @@ if (scanForm) {
           font-weight: 600;
         "
       >
-        ${isGerman ? "Datenschutzerklärung (Englisch)" : "Privacy Policy"}
+        ${
+          isGerman
+            ? "Datenschutzerklärung (Englisch)"
+            : isFrench
+              ? "politique de confidentialité (en anglais)"
+              : "Privacy Policy"
+        }
       </a>
       ${text.privacySuffix}
     `;
