@@ -238,6 +238,8 @@ if (scanForm) {
               ? "privacybeleid (in het Engels)"
             : isFrench
               ? "politique de confidentialité (en anglais)"
+            : isSpanish
+              ? "política de privacidad (en inglés)"
               : "Privacy Policy"
         }
       </a>
@@ -289,7 +291,7 @@ if (scanForm) {
 
         const isActive =
           progress.dataset.progressStep ===
-          String(step);
+            String(step);
 
         progress.classList.toggle(
           "is-active",
