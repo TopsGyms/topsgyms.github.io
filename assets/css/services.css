@@ -646,3 +646,17 @@
     padding: 28px 0;
   }
 }
+
+@media (max-width: 380px) {
+  html[lang="nl"] .services-hero h1 {
+    font-size: 42px;
+  }
+
+  html[lang="nl"] .service-detail > * {
+    min-width: 0;
+  }
+
+  html[lang="nl"] .service-detail {
+    overflow-wrap: anywhere;
+  }
+}

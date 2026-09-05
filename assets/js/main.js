@@ -29,7 +29,9 @@ const documentLanguage =
   ).toLowerCase();
 
 const currentLanguageCode =
-  documentLanguage.startsWith("fr")
+  documentLanguage.startsWith("nl")
+    ? "NL"
+    : documentLanguage.startsWith("fr")
     ? "FR"
     : documentLanguage.startsWith("de")
       ? "DE"
@@ -38,7 +40,32 @@ const currentLanguageCode =
         : "EN";
 
 const interfaceText =
-  currentLanguageCode === "FR"
+  currentLanguageCode === "NL"
+    ? {
+        openMenu:
+          "Menu openen",
+        closeMenu:
+          "Menu sluiten",
+        chooseLanguage:
+          "Kies de taal van de website.",
+        menuTitle:
+          "Taal selecteren",
+        active:
+          "Actief",
+        available:
+          "Beschikbaar",
+        soon:
+          "Binnenkort",
+        currentMessage:
+          "Deze taal is momenteel geselecteerd.",
+        comingSoon:
+          "Deze taal wordt beschikbaar zodra de professionele vertaling is voltooid.",
+        note:
+          "Engels, Spaans, Duits, Frans en Nederlands zijn momenteel beschikbaar. Andere Europese talen worden toegevoegd zodra hun professionele vertaling is voltooid.",
+        englishOnlyNote:
+          "Deze pagina is momenteel alleen beschikbaar in het Engels. De belangrijkste TopsGyms-pagina’s zijn ook beschikbaar in het Spaans, Duits, Frans en Nederlands."
+      }
+    : currentLanguageCode === "FR"
     ? {
         openMenu:
           "Ouvrir le menu",
@@ -59,9 +86,9 @@ const interfaceText =
         comingSoon:
           "Cette langue sera disponible lorsque sa traduction professionnelle sera terminée.",
         note:
-          "L’anglais, l’espagnol, l’allemand et le français sont actuellement disponibles. D’autres langues européennes seront ajoutées une fois leur traduction professionnelle terminée.",
+          "L’anglais, l’espagnol, l’allemand, le français et le néerlandais sont actuellement disponibles. D’autres langues européennes seront ajoutées une fois leur traduction professionnelle terminée.",
         englishOnlyNote:
-          "Cette page est actuellement disponible uniquement en anglais. Les pages principales de TopsGyms sont également disponibles en espagnol, en allemand et en français."
+          "Cette page est actuellement disponible uniquement en anglais. Les pages principales de TopsGyms sont également disponibles en espagnol, en allemand, en français et en néerlandais."
       }
     : currentLanguageCode === "DE"
     ? {
@@ -84,9 +111,9 @@ const interfaceText =
         comingSoon:
           "Diese Sprache wird verfügbar, sobald die professionelle Übersetzung abgeschlossen ist.",
         note:
-          "Englisch, Spanisch, Deutsch und Französisch sind derzeit verfügbar. Weitere europäische Sprachen folgen, sobald ihre professionellen Übersetzungen abgeschlossen sind.",
+          "Englisch, Spanisch, Deutsch, Französisch und Niederländisch sind derzeit verfügbar. Weitere europäische Sprachen folgen, sobald ihre professionellen Übersetzungen abgeschlossen sind.",
         englishOnlyNote:
-          "Diese Seite ist derzeit nur auf Englisch verfügbar. Die Hauptseiten von TopsGyms sind auch auf Spanisch, Deutsch und Französisch verfügbar."
+          "Diese Seite ist derzeit nur auf Englisch verfügbar. Die Hauptseiten von TopsGyms sind auch auf Spanisch, Deutsch, Französisch und Niederländisch verfügbar."
       }
     : currentLanguageCode === "ES"
     ? {
@@ -109,9 +136,9 @@ const interfaceText =
         comingSoon:
           "Este idioma estará disponible cuando se complete su traducción profesional.",
         note:
-          "Inglés, español, alemán y francés están disponibles actualmente. Se añadirán más idiomas europeos cuando sus traducciones profesionales estén completas.",
+          "Inglés, español, alemán, francés y neerlandés están disponibles actualmente. Se añadirán más idiomas europeos cuando sus traducciones profesionales estén completas.",
         englishOnlyNote:
-          "Esta página está disponible actualmente solo en inglés. El español, el alemán y el francés están disponibles en las páginas principales de TopsGyms."
+          "Esta página está disponible actualmente solo en inglés. El español, el alemán, el francés y el neerlandés están disponibles en las páginas principales de TopsGyms."
       }
     : {
         openMenu:
@@ -133,9 +160,9 @@ const interfaceText =
         comingSoon:
           "This language will become available once its professional translation is complete.",
         note:
-          "English, Spanish, German and French are currently available. Additional European languages will be added as their professional translations are completed.",
+          "English, Spanish, German, French and Dutch are currently available. Additional European languages will be added as their professional translations are completed.",
         englishOnlyNote:
-          "This page is currently available in English only. Spanish, German and French are available on the main TopsGyms pages."
+          "This page is currently available in English only. Spanish, German, French and Dutch are available on the main TopsGyms pages."
       };
 
 /* =========================================================
@@ -329,7 +356,9 @@ document
           ? "Sofie Tops auf LinkedIn"
           : currentLanguageCode === "FR"
             ? "Sofie Tops sur LinkedIn"
-            : "Sofie Tops on LinkedIn"
+            : currentLanguageCode === "NL"
+              ? "Sofie Tops op LinkedIn"
+              : "Sofie Tops on LinkedIn"
       );
     }
   );
@@ -381,7 +410,8 @@ function getCurrentRouteInfo() {
   if (
     currentLanguageCode === "ES" ||
     currentLanguageCode === "DE" ||
-    currentLanguageCode === "FR"
+    currentLanguageCode === "FR" ||
+    currentLanguageCode === "NL"
   ) {
 
     const languagePrefix =
@@ -464,7 +494,7 @@ function isLanguageAvailable(
   }
 
   return (
-    ["EN", "ES", "DE", "FR"].includes(code) &&
+    ["EN", "ES", "DE", "FR", "NL"].includes(code) &&
     currentRouteInfo.translatable
   );
 }
@@ -493,7 +523,8 @@ function getLanguageUrl(
   if (
     code === "ES" ||
     code === "DE" ||
-    code === "FR"
+    code === "FR" ||
+    code === "NL"
   ) {
 
     targetPath =
@@ -540,7 +571,7 @@ const languages = [
     code: "NL",
     name: "Nederlands",
     flag: "nl",
-    published: false
+    published: true
   },
   {
     code: "IT",
