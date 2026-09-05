@@ -19,7 +19,7 @@ These instructions apply to all future work in this repository.
 - TopsGyms is not merely an equipment seller or generic consultant.
 - The model is: analyse opportunities -> advise -> implement/upgrade -> ongoing support.
 - Primary audience: hotels, resorts and hospitality fitness spaces across Europe.
-- Website language strategy: English first, then professional European translations.
+- Website language strategy: English first, supported by professional European translations.
 
 ## Brand
 
@@ -50,14 +50,16 @@ Legal:
 - /cookies/
 - /404.html
 
-Current Spanish equivalents:
+Completed website languages:
 
-- /es/
-- /es/services/
-- /es/opportunity-scan/
-- /es/approach/
-- /es/about/
-- /es/contact/
+- English: /
+- Spanish: /es/
+- German: /de/
+- French: /fr/
+- Dutch: /nl/
+- Greek: /el/
+
+Each completed language contains translated versions of the six core public pages.
 
 ## Technical
 
@@ -74,10 +76,10 @@ Current Spanish equivalents:
 
 ## Git safety
 
-- Development branch is redesign-v2.
+- Development branch is redesign-v2 until launch is explicitly approved.
 - Never modify main directly unless explicitly instructed.
 - Before starting work, verify the current branch.
-- If not on redesign-v2, stop and report it.
+- If not on the intended branch, stop and report it.
 - Do not merge redesign-v2 into main unless explicitly instructed.
 - Do not force push.
 - Never discard unrelated user changes.
@@ -94,7 +96,8 @@ Current Spanish equivalents:
 - Sitemap is /sitemap.xml.
 - robots.txt must reference https://topsgyms.com/sitemap.xml
 - Use hreflang only for real completed translations.
-- Current EN/ES reciprocal hreflang is represented through the sitemap.
+- Completed hreflang languages are: en, es, de, fr, nl and el.
+- The multilingual sitemap contains the complete alternate-language relationships.
 - x-default should point to the English equivalent.
 - Do not create doorway pages, thin location pages or keyword-spam pages.
 - Do not index privacy, cookies or 404 pages.
@@ -109,9 +112,10 @@ Current Spanish equivalents:
 - English is the fallback for legal pages until translated legal pages exist.
 - Do not send users from an untranslated legal page to an unrelated translated homepage.
 - Keep language switcher routing context-aware.
-- Current completed languages: English and Spanish.
-- Planned first-wave languages after Spanish: German, French and Dutch.
-- Other planned languages may remain marked unavailable until complete.
+- Current completed languages: English, Spanish, German, French, Dutch and Greek.
+- Internal language codes: EN, ES, DE, FR, NL and EL.
+- Greek uses `el` for HTML language and hreflang, while the flag sprite ID is `gr`.
+- Other planned European languages must remain unavailable until their full professional translation is complete.
 
 ## Forms
 
@@ -121,6 +125,11 @@ Current Spanish equivalents:
 - Preserve backend field names and option values unless a deliberate migration is requested.
 - Localize visible form text while keeping backend compatibility.
 - Never claim successful form delivery without testing it.
+
+Current Formspree endpoints:
+
+- Opportunity Scan: https://formspree.io/f/mbgjodrk
+- Contact: https://formspree.io/f/mjyvwgba
 
 ## Core content principles
 
@@ -142,7 +151,7 @@ When the English founder quote is used, preserve it exactly:
 
 - Inspect existing files before editing.
 - Reuse existing components and patterns rather than rebuilding unnecessarily.
-- When translating a page, use the English page as the source of truth and the Spanish version as the structural multilingual reference.
+- When translating a page, use the English page as the content source of truth and existing completed translations as structural multilingual references.
 - After changes, check internal links, canonicals, hreflang/sitemap implications, language routing and forms where relevant.
 - Report what changed and any remaining risks.
 - Never silently make business, legal or factual assumptions.
