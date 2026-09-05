@@ -211,6 +211,8 @@ if (contactForm) {
               ? "privacybeleid (in het Engels)"
             : isFrench
               ? "politique de confidentialité (en anglais)"
+            : isSpanish
+              ? "política de privacidad (en inglés)"
               : "Privacy Policy"
         }
       </a>
