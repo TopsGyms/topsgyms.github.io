@@ -29,7 +29,9 @@ const documentLanguage =
   ).toLowerCase();
 
 const currentLanguageCode =
-  documentLanguage.startsWith("nl")
+  documentLanguage.startsWith("el")
+    ? "EL"
+    : documentLanguage.startsWith("nl")
     ? "NL"
     : documentLanguage.startsWith("fr")
     ? "FR"
@@ -40,7 +42,32 @@ const currentLanguageCode =
         : "EN";
 
 const interfaceText =
-  currentLanguageCode === "NL"
+  currentLanguageCode === "EL"
+    ? {
+        openMenu:
+          "Άνοιγμα μενού",
+        closeMenu:
+          "Κλείσιμο μενού",
+        chooseLanguage:
+          "Επιλέξτε τη γλώσσα του ιστοτόπου.",
+        menuTitle:
+          "Επιλογή γλώσσας",
+        active:
+          "Ενεργή",
+        available:
+          "Διαθέσιμη",
+        soon:
+          "Σύντομα",
+        currentMessage:
+          "Αυτή είναι η επιλεγμένη γλώσσα.",
+        comingSoon:
+          "Αυτή η γλώσσα θα είναι διαθέσιμη μόλις ολοκληρωθεί η επαγγελματική μετάφρασή της.",
+        note:
+          "Προς το παρόν είναι διαθέσιμα τα αγγλικά, τα ισπανικά, τα γερμανικά, τα γαλλικά, τα ολλανδικά και τα ελληνικά. Θα προστεθούν και άλλες ευρωπαϊκές γλώσσες μόλις ολοκληρωθούν οι επαγγελματικές μεταφράσεις τους.",
+        englishOnlyNote:
+          "Αυτή η σελίδα είναι προς το παρόν διαθέσιμη μόνο στα αγγλικά. Οι κύριες σελίδες της TopsGyms είναι επίσης διαθέσιμες στα ισπανικά, στα γερμανικά, στα γαλλικά, στα ολλανδικά και στα ελληνικά."
+      }
+    : currentLanguageCode === "NL"
     ? {
         openMenu:
           "Menu openen",
@@ -61,9 +88,9 @@ const interfaceText =
         comingSoon:
           "Deze taal wordt beschikbaar zodra de professionele vertaling is voltooid.",
         note:
-          "Engels, Spaans, Duits, Frans en Nederlands zijn momenteel beschikbaar. Andere Europese talen worden toegevoegd zodra hun professionele vertaling is voltooid.",
+          "Engels, Spaans, Duits, Frans, Nederlands en Grieks zijn momenteel beschikbaar. Andere Europese talen worden toegevoegd zodra hun professionele vertaling is voltooid.",
         englishOnlyNote:
-          "Deze pagina is momenteel alleen beschikbaar in het Engels. De belangrijkste TopsGyms-pagina’s zijn ook beschikbaar in het Spaans, Duits, Frans en Nederlands."
+          "Deze pagina is momenteel alleen beschikbaar in het Engels. De belangrijkste TopsGyms-pagina’s zijn ook beschikbaar in het Spaans, Duits, Frans, Nederlands en Grieks."
       }
     : currentLanguageCode === "FR"
     ? {
@@ -86,9 +113,9 @@ const interfaceText =
         comingSoon:
           "Cette langue sera disponible lorsque sa traduction professionnelle sera terminée.",
         note:
-          "L’anglais, l’espagnol, l’allemand, le français et le néerlandais sont actuellement disponibles. D’autres langues européennes seront ajoutées une fois leur traduction professionnelle terminée.",
+          "L’anglais, l’espagnol, l’allemand, le français, le néerlandais et le grec sont actuellement disponibles. D’autres langues européennes seront ajoutées une fois leur traduction professionnelle terminée.",
         englishOnlyNote:
-          "Cette page est actuellement disponible uniquement en anglais. Les pages principales de TopsGyms sont également disponibles en espagnol, en allemand, en français et en néerlandais."
+          "Cette page est actuellement disponible uniquement en anglais. Les pages principales de TopsGyms sont également disponibles en espagnol, en allemand, en français, en néerlandais et en grec."
       }
     : currentLanguageCode === "DE"
     ? {
@@ -111,9 +138,9 @@ const interfaceText =
         comingSoon:
           "Diese Sprache wird verfügbar, sobald die professionelle Übersetzung abgeschlossen ist.",
         note:
-          "Englisch, Spanisch, Deutsch, Französisch und Niederländisch sind derzeit verfügbar. Weitere europäische Sprachen folgen, sobald ihre professionellen Übersetzungen abgeschlossen sind.",
+          "Englisch, Spanisch, Deutsch, Französisch, Niederländisch und Griechisch sind derzeit verfügbar. Weitere europäische Sprachen folgen, sobald ihre professionellen Übersetzungen abgeschlossen sind.",
         englishOnlyNote:
-          "Diese Seite ist derzeit nur auf Englisch verfügbar. Die Hauptseiten von TopsGyms sind auch auf Spanisch, Deutsch, Französisch und Niederländisch verfügbar."
+          "Diese Seite ist derzeit nur auf Englisch verfügbar. Die Hauptseiten von TopsGyms sind auch auf Spanisch, Deutsch, Französisch, Niederländisch und Griechisch verfügbar."
       }
     : currentLanguageCode === "ES"
     ? {
@@ -136,9 +163,9 @@ const interfaceText =
         comingSoon:
           "Este idioma estará disponible cuando se complete su traducción profesional.",
         note:
-          "Inglés, español, alemán, francés y neerlandés están disponibles actualmente. Se añadirán más idiomas europeos cuando sus traducciones profesionales estén completas.",
+          "Inglés, español, alemán, francés, neerlandés y griego están disponibles actualmente. Se añadirán más idiomas europeos cuando sus traducciones profesionales estén completas.",
         englishOnlyNote:
-          "Esta página está disponible actualmente solo en inglés. El español, el alemán, el francés y el neerlandés están disponibles en las páginas principales de TopsGyms."
+          "Esta página está disponible actualmente solo en inglés. El español, el alemán, el francés, el neerlandés y el griego están disponibles en las páginas principales de TopsGyms."
       }
     : {
         openMenu:
@@ -160,9 +187,9 @@ const interfaceText =
         comingSoon:
           "This language will become available once its professional translation is complete.",
         note:
-          "English, Spanish, German, French and Dutch are currently available. Additional European languages will be added as their professional translations are completed.",
+          "English, Spanish, German, French, Dutch and Greek are currently available. Additional European languages will be added as their professional translations are completed.",
         englishOnlyNote:
-          "This page is currently available in English only. Spanish, German, French and Dutch are available on the main TopsGyms pages."
+          "This page is currently available in English only. Spanish, German, French, Dutch and Greek are available on the main TopsGyms pages."
       };
 
 /* =========================================================
@@ -352,7 +379,9 @@ document
 
       link.setAttribute(
         "aria-label",
-        currentLanguageCode === "DE"
+        currentLanguageCode === "EL"
+          ? "Η Sofie Tops στο LinkedIn"
+          : currentLanguageCode === "DE"
           ? "Sofie Tops auf LinkedIn"
           : currentLanguageCode === "FR"
             ? "Sofie Tops sur LinkedIn"
@@ -411,7 +440,8 @@ function getCurrentRouteInfo() {
     currentLanguageCode === "ES" ||
     currentLanguageCode === "DE" ||
     currentLanguageCode === "FR" ||
-    currentLanguageCode === "NL"
+    currentLanguageCode === "NL" ||
+    currentLanguageCode === "EL"
   ) {
 
     const languagePrefix =
@@ -494,7 +524,7 @@ function isLanguageAvailable(
   }
 
   return (
-    ["EN", "ES", "DE", "FR", "NL"].includes(code) &&
+    ["EN", "ES", "DE", "FR", "NL", "EL"].includes(code) &&
     currentRouteInfo.translatable
   );
 }
@@ -524,7 +554,8 @@ function getLanguageUrl(
     code === "ES" ||
     code === "DE" ||
     code === "FR" ||
-    code === "NL"
+    code === "NL" ||
+    code === "EL"
   ) {
 
     targetPath =
@@ -619,7 +650,7 @@ const languages = [
     code: "EL",
     name: "Ελληνικά",
     flag: "gr",
-    published: false
+    published: true
   }
 ];
 

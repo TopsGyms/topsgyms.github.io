@@ -17,6 +17,11 @@ if (contactForm) {
      LANGUAGE
      ========================================================= */
 
+  const isGreek =
+    contactForm.dataset.formLanguage === "el" ||
+    window.location.pathname === "/el" ||
+    window.location.pathname.startsWith("/el/");
+
   const isFrench =
     contactForm.dataset.formLanguage === "fr" ||
     window.location.pathname === "/fr" ||
@@ -40,7 +45,24 @@ if (contactForm) {
     );
 
   const text =
-    isDutch
+    isGreek
+      ? {
+          privacyPrefix:
+            "Έχω διαβάσει και κατανοώ την",
+          privacySuffix:
+            "και κατανοώ ότι η TopsGyms θα επεξεργαστεί τα στοιχεία που παρέχω για να εξετάσει και να απαντήσει στο αίτημά μου.",
+          sending:
+            "Αποστολή σε εξέλιξη…",
+          success:
+            "Ευχαριστούμε. Το αίτημά σας στάλθηκε επιτυχώς. Η TopsGyms θα το εξετάσει προσωπικά και θα επικοινωνήσει μαζί σας σύντομα.",
+          error:
+            "Παρουσιάστηκε πρόβλημα κατά την αποστολή του αιτήματός σας. Δοκιμάστε ξανά ή στείλτε email στο sofie@topsgyms.com.",
+          subject:
+            "New TopsGyms website enquiry - Greek",
+          language:
+            "Greek"
+        }
+      : isDutch
       ? {
           privacyPrefix:
             "Ik heb het",
@@ -181,7 +203,9 @@ if (contactForm) {
         "
       >
         ${
-          isGerman
+          isGreek
+            ? "πολιτική απορρήτου (στα αγγλικά)"
+            : isGerman
             ? "Datenschutzerklärung (Englisch)"
             : isDutch
               ? "privacybeleid (in het Engels)"
