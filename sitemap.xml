@@ -1,8 +1,439 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+
   <url>
     <loc>https://topsgyms.com/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/" />
   </url>
+
+  <url>
+    <loc>https://topsgyms.com/es/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/de/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/fr/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/nl/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/el/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/services/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/services/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/services/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/services/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/services/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/services/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/services/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/services/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/es/services/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/services/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/services/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/services/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/services/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/services/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/services/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/services/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/de/services/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/services/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/services/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/services/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/services/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/services/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/services/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/services/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/fr/services/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/services/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/services/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/services/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/services/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/services/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/services/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/services/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/nl/services/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/services/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/services/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/services/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/services/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/services/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/services/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/services/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/el/services/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/services/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/services/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/services/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/services/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/services/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/services/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/services/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/opportunity-scan/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/opportunity-scan/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/es/opportunity-scan/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/opportunity-scan/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/de/opportunity-scan/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/opportunity-scan/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/fr/opportunity-scan/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/opportunity-scan/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/nl/opportunity-scan/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/opportunity-scan/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/el/opportunity-scan/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/opportunity-scan/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/opportunity-scan/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/approach/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/approach/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/approach/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/approach/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/approach/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/approach/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/approach/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/approach/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/es/approach/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/approach/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/approach/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/approach/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/approach/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/approach/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/approach/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/approach/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/de/approach/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/approach/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/approach/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/approach/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/approach/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/approach/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/approach/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/approach/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/fr/approach/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/approach/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/approach/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/approach/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/approach/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/approach/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/approach/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/approach/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/nl/approach/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/approach/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/approach/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/approach/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/approach/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/approach/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/approach/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/approach/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/el/approach/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/approach/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/approach/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/approach/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/approach/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/approach/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/approach/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/approach/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/about/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/about/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/about/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/about/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/about/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/about/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/about/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/es/about/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/about/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/about/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/about/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/about/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/about/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/about/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/de/about/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/about/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/about/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/about/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/about/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/about/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/about/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/fr/about/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/about/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/about/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/about/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/about/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/about/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/about/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/nl/about/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/about/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/about/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/about/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/about/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/about/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/about/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/el/about/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/about/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/about/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/about/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/about/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/about/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/about/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/contact/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/contact/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/contact/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/contact/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/contact/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/contact/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/contact/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/es/contact/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/contact/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/contact/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/contact/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/contact/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/contact/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/contact/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/de/contact/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/contact/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/contact/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/contact/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/contact/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/contact/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/contact/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/fr/contact/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/contact/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/contact/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/contact/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/contact/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/contact/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/contact/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/nl/contact/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/contact/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/contact/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/contact/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/contact/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/contact/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/contact/" />
+  </url>
+
+  <url>
+    <loc>https://topsgyms.com/el/contact/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/contact/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://topsgyms.com/es/contact/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://topsgyms.com/de/contact/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topsgyms.com/fr/contact/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://topsgyms.com/nl/contact/" />
+    <xhtml:link rel="alternate" hreflang="el" href="https://topsgyms.com/el/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/contact/" />
+  </url>
+
 </urlset>

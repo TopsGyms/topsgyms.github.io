@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+
+  <symbol id="gb" viewBox="0 0 24 16">
+    <rect width="24" height="16" fill="#012169"/>
+    <path d="M0 0L24 16M24 0L0 16" stroke="#fff" stroke-width="4"/>
+    <path d="M0 0L24 16M24 0L0 16" stroke="#C8102E" stroke-width="2"/>
+    <path d="M12 0V16M0 8H24" stroke="#fff" stroke-width="5"/>
+    <path d="M12 0V16M0 8H24" stroke="#C8102E" stroke-width="3"/>
+  </symbol>
+
+  <symbol id="es" viewBox="0 0 24 16">
+    <rect width="24" height="16" fill="#AA151B"/>
+    <rect y="4" width="24" height="8" fill="#F1BF00"/>
+  </symbol>
+
+  <symbol id="de" viewBox="0 0 24 16">
+    <rect width="24" height="5.34" fill="#000"/>
+    <rect y="5.33" width="24" height="5.34" fill="#DD0000"/>
+    <rect y="10.66" width="24" height="5.34" fill="#FFCE00"/>
+  </symbol>
+
+  <symbol id="fr" viewBox="0 0 24 16">
+    <rect width="8" height="16" fill="#0055A4"/>
+    <rect x="8" width="8" height="16" fill="#fff"/>
+    <rect x="16" width="8" height="16" fill="#EF4135"/>
+  </symbol>
+
+  <symbol id="nl" viewBox="0 0 24 16">
+    <rect width="24" height="5.34" fill="#AE1C28"/>
+    <rect y="5.33" width="24" height="5.34" fill="#fff"/>
+    <rect y="10.66" width="24" height="5.34" fill="#21468B"/>
+  </symbol>
+
+  <symbol id="it" viewBox="0 0 24 16">
+    <rect width="8" height="16" fill="#009246"/>
+    <rect x="8" width="8" height="16" fill="#fff"/>
+    <rect x="16" width="8" height="16" fill="#CE2B37"/>
+  </symbol>
+
+  <symbol id="pt" viewBox="0 0 24 16">
+    <rect width="9.6" height="16" fill="#046A38"/>
+    <rect x="9.6" width="14.4" height="16" fill="#DA291C"/>
+    <circle cx="9.6" cy="8" r="2.2" fill="#FFCC29"/>
+    <circle cx="9.6" cy="8" r="1.4" fill="#fff"/>
+  </symbol>
+
+  <symbol id="pl" viewBox="0 0 24 16">
+    <rect width="24" height="8" fill="#fff"/>
+    <rect y="8" width="24" height="8" fill="#DC143C"/>
+  </symbol>
+
+  <symbol id="se" viewBox="0 0 24 16">
+    <rect width="24" height="16" fill="#006AA7"/>
+    <rect x="7" width="3" height="16" fill="#FECC00"/>
+    <rect y="6.5" width="24" height="3" fill="#FECC00"/>
+  </symbol>
+
+  <symbol id="dk" viewBox="0 0 24 16">
+    <rect width="24" height="16" fill="#C60C30"/>
+    <rect x="7" width="3" height="16" fill="#fff"/>
+    <rect y="6.5" width="24" height="3" fill="#fff"/>
+  </symbol>
+
+  <symbol id="no" viewBox="0 0 24 16">
+    <rect width="24" height="16" fill="#BA0C2F"/>
+    <rect x="7" width="4" height="16" fill="#fff"/>
+    <rect y="6" width="24" height="4" fill="#fff"/>
+    <rect x="8" width="2" height="16" fill="#00205B"/>
+    <rect y="7" width="24" height="2" fill="#00205B"/>
+  </symbol>
+
+  <symbol id="fi" viewBox="0 0 24 16">
+    <rect width="24" height="16" fill="#fff"/>
+    <rect x="7" width="4" height="16" fill="#003580"/>
+    <rect y="6" width="24" height="4" fill="#003580"/>
+  </symbol>
+
+  <symbol id="gr" viewBox="0 0 24 16">
+    <rect width="24" height="16" fill="#0D5EAF"/>
+    <rect y="1.78" width="24" height="1.78" fill="#fff"/>
+    <rect y="5.33" width="24" height="1.78" fill="#fff"/>
+    <rect y="8.89" width="24" height="1.78" fill="#fff"/>
+    <rect y="12.44" width="24" height="1.78" fill="#fff"/>
+    <rect width="8.9" height="8.9" fill="#0D5EAF"/>
+    <rect x="3.55" width="1.78" height="8.9" fill="#fff"/>
+    <rect y="3.55" width="8.9" height="1.78" fill="#fff"/>
+  </symbol>
+
+</svg>
