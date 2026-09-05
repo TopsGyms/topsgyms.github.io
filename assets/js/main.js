@@ -387,7 +387,9 @@ document
             ? "Sofie Tops sur LinkedIn"
             : currentLanguageCode === "NL"
               ? "Sofie Tops op LinkedIn"
-              : "Sofie Tops on LinkedIn"
+              : currentLanguageCode === "ES"
+                ? "Sofie Tops en LinkedIn"
+                : "Sofie Tops on LinkedIn"
       );
     }
   );
@@ -605,6 +607,12 @@ const languages = [
     published: true
   },
   {
+    code: "EL",
+    name: "Ελληνικά",
+    flag: "gr",
+    published: true
+  },
+  {
     code: "IT",
     name: "Italiano",
     flag: "it",
@@ -645,12 +653,6 @@ const languages = [
     name: "Suomi",
     flag: "fi",
     published: false
-  },
-  {
-    code: "EL",
-    name: "Ελληνικά",
-    flag: "gr",
-    published: true
   }
 ];
 
