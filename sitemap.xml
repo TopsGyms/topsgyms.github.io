@@ -513,4 +513,11 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/insights/hotel-gym-trends-europe/" />
   </url>
 
+  <url>
+    <loc>https://topsgyms.com/guest-fitness-experience-check/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/guest-fitness-experience-check/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/guest-fitness-experience-check/" />
+  </url>
+
 </urlset>
