@@ -513,18 +513,4 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/insights/hotel-gym-trends-europe/" />
   </url>
 
-  <url>
-    <loc>https://topsgyms.com/privacy/</loc>
-    <lastmod>2026-09-18</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/privacy/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/privacy/" />
-  </url>
-
-  <url>
-    <loc>https://topsgyms.com/cookies/</loc>
-    <lastmod>2026-09-18</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://topsgyms.com/cookies/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://topsgyms.com/cookies/" />
-  </url>
-
 </urlset>
