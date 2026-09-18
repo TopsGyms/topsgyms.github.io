@@ -301,17 +301,17 @@
   font-size: 9px;
   font-weight: 700;
   letter-spacing: .14em;
-  color: rgba(245,235,216,.34);
+  color: rgba(19,51,84,.42);
 }
 
 .process-row h3 {
   margin: 0;
-  color: var(--color-sand);
+  color: var(--color-navy);
 }
 
 .process-row p {
   max-width: 600px;
-  color: rgba(245,235,216,.58);
+  color: rgba(19,51,84,.68);
 }
 
 /* WHO */
